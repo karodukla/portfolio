@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karolina Scavelli — Graphic Designer, Los Angeles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F6F1E9;--black:#0E0D0C;--rust:#C84B2F;
+  --warm:#E0D5C5;--muted:#8A8278;--dark:#1A1816;
+  --serif:'Cormorant Garamond',serif;--mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:var(--mono);overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{width:10px;height:10px;background:var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s}
+#cur-r{width:34px;height:34px;border:1px solid var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.45}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:20px 52px;background:rgba(246,241,233,.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(14,13,12,.07)}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;text-decoration:none;color:var(--black);cursor:none}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--dark);position:relative;padding-bottom:2px;cursor:none;transition:color .25s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--rust);transition:width .3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--rust)}
+.nav-cta{background:var(--black)!important;color:var(--cream)!important;padding:9px 22px;transition:background .25s!important}
+.nav-cta:hover{background:var(--rust)!important}
+.nav-cta::after{display:none!important}
+
+/* PAGES */
+.page{display:none;padding-top:65px}
+.page.active{display:block}
+
+/* SHARED */
+.s-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.s-title{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:700;line-height:1.1;color:var(--black)}
+.s-title em{font-style:italic;color:var(--rust)}
+.s-light{color:var(--cream)}
+.btn-solid{background:var(--black);color:var(--cream);padding:15px 34px;font-family:var(--mono);font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;display:inline-block;border:none;cursor:none;transition:background .25s,transform .2s}
+.btn-solid:hover{background:var(--rust);transform:translateY(-2px)}
+.btn-ghost{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--black);text-decoration:none;display:inline-flex;align-items:center;gap:7px;border-bottom:1px solid var(--black);padding-bottom:3px;cursor:none;transition:color .25s,border-color .25s}
+.btn-ghost:hover{color:var(--rust);border-color:var(--rust)}
+.arr{display:inline-block;transition:transform .3s}
+.btn-ghost:hover .arr,.btn-back:hover .arr{transform:translateX(-5px)}
+.btn-back{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:7px;cursor:none;transition:color .25s;margin-bottom:32px}
+.btn-back:hover{color:var(--rust)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* TICKER */
+.ticker{background:var(--black);padding:15px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:ticker 28s linear infinite}
+.t-item{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--cream);padding:0 34px}
+.t-dot{color:var(--rust);font-style:normal}
+
+/* FOOTER */
+footer{background:var(--black);padding:26px 52px;display:flex;justify-content:space-between;align-items:center}
+footer span{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:#4A4845}
+.f-links{display:flex;gap:22px}
+.f-links a{font-family:var(--mono);font-size:.58rem;color:#4A4845;text-decoration:none;cursor:none;transition:color .25s}
+.f-links a:hover{color:var(--cream)}
+
+/* ── HOME ── */
+.hero{min-height:calc(100vh - 65px);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 72px}
+.hero-col{position:absolute;inset:0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:5px;z-index:0}
+.hero-col::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(246,241,233,.05) 0%,rgba(246,241,233,.8) 54%,var(--cream) 87%);z-index:1}
+.hc{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.9)}
+.hc.r2{grid-row:span 2}
+.hero-badge{position:absolute;top:28px;right:52px;z-index:5;display:flex;align-items:center;gap:12px;animation:fadeIn .8s ease 1s both}
+.hero-badge img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--rust)}
+.hb-name{font-family:var(--serif);font-size:.92rem;font-weight:700;color:var(--black);line-height:1.2}
+.hb-role{font-family:var(--mono);font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rust)}
+.hero-body{position:relative;z-index:3}
+.hero-tag{font-family:var(--mono);font-size:.61rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:16px;animation:fadeUp .7s ease .3s both}
+.hero-h1{font-family:var(--serif);font-size:clamp(4.5rem,8vw,7.5rem);font-weight:700;line-height:.97;color:var(--black);margin-bottom:34px;animation:fadeUp .7s ease .5s both}
+.hero-h1 em{font-style:italic;color:var(--rust)}
+.hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;animation:fadeUp .7s ease .7s both}
+.hero-desc{font-size:.79rem;line-height:1.95;color:#5A5550;max-width:340px}
+.hero-acts{display:flex;align-items:center;gap:20px;flex-shrink:0}
+
+.work-sec{padding:80px 52px}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.link-ul{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:3px;white-space:nowrap;cursor:none;transition:color .25s,border-color .25s}
+.link-ul:hover{color:var(--rust);border-color:var(--rust)}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:260px;gap:14px}
+.wi{position:relative;overflow:hidden;background:var(--warm);cursor:none}
+.wi:nth-child(1){grid-column:1/8;grid-row:span 2}
+.wi:nth-child(2){grid-column:8/13;grid-row:span 2}
+.wi:nth-child(3){grid-column:1/5}
+.wi:nth-child(4){grid-column:5/9}
+.wi:nth-child(5){grid-column:9/13}
+.wi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.wi:hover img{transform:scale(1.07)}
+.wi-cap{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(to top,rgba(14,13,12,.88),transparent);color:var(--cream);transform:translateY(8px);opacity:0;transition:transform .4s,opacity .4s}
+.wi:hover .wi-cap{transform:translateY(0);opacity:1}
+.wc-cat{font-family:var(--mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:4px}
+.wc-name{font-family:var(--serif);font-size:1.2rem;font-weight:700}
+.wc-desc{font-family:var(--mono);font-size:.66rem;line-height:1.7;color:rgba(246,241,233,.75);margin-top:5px}
+
+.spec{background:var(--warm);padding:32px 52px;display:flex;align-items:center;gap:36px;overflow-x:auto}
+.spec-lbl{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.spec-items{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.spec-item{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--black);white-space:nowrap}
+.spec-div{color:var(--rust)}
+
+.about-sec{display:grid;grid-template-columns:1fr 1fr;min-height:75vh}
+.about-img{position:relative;overflow:hidden;background:var(--black)}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.8}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,12,.5),transparent 55%)}
+.about-foot{position:absolute;bottom:36px;left:36px;color:var(--cream)}
+.big-ks{font-family:var(--serif);font-size:7rem;font-weight:700;line-height:1;opacity:.13}
+.loc{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.6)}
+.about-txt{padding:68px 60px;display:flex;flex-direction:column;justify-content:center}
+.about-body{font-family:var(--mono);font-size:.78rem;line-height:2;color:#5A5550;margin-bottom:16px}
+.skills{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0}
+.sk{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--warm);color:var(--muted);transition:all .25s;cursor:default}
+.sk:hover{border-color:var(--rust);color:var(--black)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:30px;border-top:1px solid var(--warm)}
+.stat-n{font-family:var(--serif);font-size:2.6rem;font-weight:700;color:var(--black);line-height:1}
+.stat-l{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+
+.svc-sec{background:var(--black);padding:80px 52px}
+.svc-head{margin-bottom:48px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#252320}
+.svc{background:var(--black);padding:42px 34px;transition:background .25s}
+.svc:hover{background:#181614}
+.svc-n{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;color:var(--rust);margin-bottom:16px}
+.svc-name{font-family:var(--serif);font-size:1.65rem;font-weight:700;color:var(--cream);margin-bottom:12px;line-height:1.15}
+.svc-desc{font-family:var(--mono);font-size:.73rem;line-height:1.95;color:#7A7470}
+.svc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.svc-tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border:1px solid #333;color:#7A7470;transition:all .25s}
+.svc:hover .svc-tag{border-color:var(--rust);color:var(--cream)}
+
+.proc-sec{padding:80px 52px}
+.proc-head{margin-bottom:48px}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.ps{border-top:2px solid var(--black);padding-top:26px}
+.ps-n{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;color:var(--rust);margin-bottom:14px}
+.ps-name{font-family:var(--serif);font-size:1.45rem;font-weight:700;margin-bottom:11px;line-height:1.2}
+.ps-desc{font-family:var(--mono);font-size:.73rem;line-height:1.95;color:#5A5550}
+
+.cta-band{background:var(--rust);padding:80px 52px;display:flex;justify-content:space-between;align-items:center;gap:48px}
+.cta-left{max-width:520px}
+.cta-label{font-family:var(--mono);font-size:.59rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(246,241,233,.6);margin-bottom:14px}
+.cta-title{font-family:var(--serif);font-size:clamp(2.6rem,4.5vw,4rem);font-weight:700;color:var(--cream);line-height:1.08;margin-bottom:18px}
+.cta-sub{font-family:var(--mono);font-size:.76rem;line-height:1.95;color:rgba(246,241,233,.75)}
+.cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:16px;flex-shrink:0}
+.cta-email{font-family:var(--serif);font-size:1.6rem;font-weight:700;font-style:italic;color:var(--cream);text-decoration:none;border-bottom:2px solid rgba(246,241,233,.35);padding-bottom:7px;white-space:nowrap;transition:border-color .25s;cursor:none}
+.cta-email:hover{border-color:var(--cream)}
+.soc-row{display:flex;gap:18px}
+.soc{font-family:var(--mono);font-size:.59rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(246,241,233,.65);text-decoration:none;cursor:none;transition:color .25s}
+.soc:hover{color:var(--cream)}
+
+/* ── PORTFOLIO ── */
+.port-hero{padding:72px 52px 52px;border-bottom:1px solid var(--warm)}
+.port-filter{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.fbtn{font-family:var(--mono);font-size:.59rem;letter-spacing:.15em;text-transform:uppercase;padding:9px 20px;border:1px solid rgba(14,13,12,.2);background:transparent;color:var(--muted);cursor:none;transition:all .25s}
+.fbtn:hover,.fbtn.on{border-color:var(--black);background:var(--black);color:var(--cream)}
+.port-grid{padding:2px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--warm)}
+.pi{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:none}
+.pi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.pi:hover img{transform:scale(1.06)}
+.pi-ov{position:absolute;inset:0;background:rgba(14,13,12,0);transition:background .4s;display:flex;align-items:flex-end;padding:28px}
+.pi:hover .pi-ov{background:rgba(14,13,12,.78)}
+.pi-info{transform:translateY(16px);opacity:0;transition:transform .4s,opacity .4s;color:var(--cream)}
+.pi:hover .pi-info{transform:translateY(0);opacity:1}
+.pi-cat{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.pi-name{font-family:var(--serif);font-size:1.4rem;font-weight:700;line-height:1.2;margin-bottom:6px}
+.pi-desc{font-family:var(--mono);font-size:.7rem;line-height:1.75;color:rgba(246,241,233,.78)}
+.pi-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.57rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-top:10px;border-bottom:1px solid var(--rust);padding-bottom:2px;cursor:none;background:none;border-left:none;border-right:none;border-top:none}
+
+.port-feat{padding:52px;background:var(--black)}
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#252320;margin-top:40px}
+.pfi{position:relative;overflow:hidden;aspect-ratio:16/9;cursor:none}
+.pfi img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.8)}
+.pfi:hover img{transform:scale(1.05);filter:brightness(.9)}
+.pfi-info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;background:linear-gradient(to top,rgba(14,13,12,.8),transparent 60%)}
+.pfi-cat{font-family:var(--mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.pfi-name{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1.2}
+.pfi-sub{font-family:var(--mono);font-size:.7rem;line-height:1.75;color:rgba(246,241,233,.7);margin-top:6px}
+
+/* ── PROJECT DETAIL ── */
+.proj-detail{padding:52px}
+.proj-hero-img{width:100%;aspect-ratio:16/7;object-fit:cover;display:block;margin-bottom:52px}
+.proj-layout{display:grid;grid-template-columns:1fr 2fr;gap:64px;margin-bottom:64px}
+.proj-meta{display:flex;flex-direction:column;gap:24px}
+.pm-label{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.pm-val{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--black)}
+.proj-content{}
+.proj-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,3.8rem);font-weight:700;color:var(--black);line-height:1.1;margin-bottom:24px}
+.proj-title em{font-style:italic;color:var(--rust)}
+.proj-body{font-family:var(--mono);font-size:.78rem;line-height:2;color:#5A5550;margin-bottom:20px}
+.proj-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:40px 0}
+.proj-imgs img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.proj-imgs.three{grid-template-columns:repeat(3,1fr)}
+.proj-quote{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--black);line-height:1.5;padding:36px 0;border-top:1px solid var(--warm);border-bottom:1px solid var(--warm);margin:36px 0}
+.proj-next{display:flex;justify-content:space-between;align-items:center;padding:36px 0;border-top:1px solid var(--warm);margin-top:36px}
+.pn-label{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pn-name{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--black);cursor:none}
+.pn-name:hover{color:var(--rust)}
+
+/* ── BLOG ── */
+.blog-hero{padding:72px 52px 52px;background:var(--black)}
+.blog-hero .s-label{color:#5A5550}
+.blog-hero .s-title{color:var(--cream)}
+.blog-feat{padding:52px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;border-bottom:1px solid var(--warm)}
+.bf-img{overflow:hidden;aspect-ratio:16/9}
+.bf-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.bf-img:hover img{transform:scale(1.04)}
+.bf-cat{font-family:var(--mono);font-size:.59rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.bf-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--black);line-height:1.2;margin-bottom:10px;cursor:none}
+.bf-title:hover{color:var(--rust)}
+.bf-date{font-family:var(--mono);font-size:.59rem;letter-spacing:.12em;color:var(--muted);margin-bottom:16px}
+.bf-desc{font-family:var(--mono);font-size:.77rem;line-height:1.95;color:#5A5550;margin-bottom:22px}
+.blog-grid-sec{padding:52px}
+.bg-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
+.blog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.bc{background:var(--cream);overflow:hidden;border:1px solid var(--warm);transition:border-color .25s;cursor:none}
+.bc:hover{border-color:var(--rust)}
+.bc-wrap{overflow:hidden}
+.bc img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .5s}
+.bc:hover img{transform:scale(1.05)}
+.bc-body{padding:22px}
+.bc-cat{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.bc-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--black);line-height:1.25;margin-bottom:8px}
+.bc-date{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+.bc-desc{font-family:var(--mono);font-size:.71rem;line-height:1.85;color:#5A5550}
+.bc-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--black);text-decoration:none;margin-top:14px;border-bottom:1px solid var(--black);padding-bottom:2px;cursor:none;transition:color .25s,border-color .25s;background:none;border-left:none;border-right:none;border-top:none}
+.bc-link:hover{color:var(--rust);border-bottom-color:var(--rust)}
+.topics{background:var(--warm);padding:52px}
+.topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.tp{background:var(--cream);padding:28px 24px;border:1px solid transparent;transition:all .25s;cursor:default}
+.tp:hover{border-color:var(--rust);transform:translateY(-4px)}
+.tp-icon{font-size:1.6rem;margin-bottom:12px}
+.tp-name{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--black);margin-bottom:6px}
+.tp-count{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--muted)}
+
+/* ── BLOG ARTICLE ── */
+.article{max-width:720px;margin:0 auto;padding:52px 52px 80px}
+.art-cat{font-family:var(--mono);font-size:.59rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:16px}
+.art-title{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;color:var(--black);line-height:1.1;margin-bottom:16px}
+.art-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--muted);margin-bottom:32px;display:flex;gap:20px;align-items:center}
+.art-meta span{display:flex;align-items:center;gap:5px}
+.art-hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:40px}
+.art-body{font-family:var(--mono);font-size:.8rem;line-height:2.1;color:#3A3835}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--black);margin:36px 0 16px;line-height:1.2}
+.art-body h3{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--black);margin:28px 0 12px}
+.art-body strong{color:var(--black);font-weight:500}
+.art-body em{font-style:italic;color:var(--rust)}
+.art-pull{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--black);line-height:1.5;padding:28px 0 28px 28px;border-left:3px solid var(--rust);margin:32px 0}
+.art-img{width:100%;margin:28px 0;display:block}
+.art-img img{width:100%;object-fit:cover;display:block}
+.art-img figcaption{font-family:var(--mono);font-size:.62rem;color:var(--muted);margin-top:8px;letter-spacing:.08em}
+.art-tags{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 0;padding-top:28px;border-top:1px solid var(--warm)}
+.art-tag{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--warm);color:var(--muted)}
+.art-author{display:flex;align-items:center;gap:18px;padding:28px;background:var(--warm);margin-top:40px}
+.art-author img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
+.aa-name{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--black);margin-bottom:4px}
+.aa-bio{font-family:var(--mono);font-size:.7rem;line-height:1.8;color:#5A5550}
+.art-more{padding:52px;border-top:1px solid var(--warm)}
+.art-more-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px}
+
+/* ── CONTACT ── */
+.contact-pg{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 65px)}
+.cp-l{background:var(--black);padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+.cp-lbl{font-family:var(--mono);font-size:.59rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(246,241,233,.5);margin-bottom:16px}
+.cp-title{font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4rem);font-weight:700;color:var(--cream);line-height:1.08;margin-bottom:20px}
+.cp-sub{font-family:var(--mono);font-size:.77rem;line-height:1.95;color:rgba(246,241,233,.65);margin-bottom:36px}
+.cp-rows{display:flex;flex-direction:column;gap:18px;margin-bottom:36px}
+.cp-row{display:flex;flex-direction:column;gap:4px}
+.cp-rl{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.4)}
+.cp-rv{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--cream);text-decoration:none;cursor:none;transition:color .25s}
+.cp-rv:hover{color:var(--rust)}
+.cp-socs{display:flex;gap:12px;flex-wrap:wrap}
+.cp-soc{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:9px 18px;border:1px solid rgba(246,241,233,.2);color:rgba(246,241,233,.65);text-decoration:none;cursor:none;transition:all .25s}
+.cp-soc:hover{border-color:var(--rust);color:var(--cream)}
+.cp-r{background:var(--cream);padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+.cp-ft{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--black);margin-bottom:6px}
+.cp-fs{font-family:var(--mono);font-size:.72rem;line-height:1.85;color:#5A5550;margin-bottom:32px}
+.fg{margin-bottom:20px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.fg label,.fr label{display:block;font-family:var(--mono);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.fg input,.fg textarea,.fr input{width:100%;font-family:var(--mono);font-size:.76rem;padding:12px 14px;border:1px solid var(--warm);background:var(--cream);color:var(--dark);outline:none;transition:border-color .25s;cursor:text}
+.fg input:focus,.fg textarea:focus,.fr input:focus{border-color:var(--black)}
+.fg textarea{resize:vertical;min-height:110px}
+.svc-checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:5px}
+.sch{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--warm);color:var(--muted);cursor:none;transition:all .25s;user-select:none}
+.sch.on{border-color:var(--black);background:var(--black);color:var(--cream)}
+.f-submit{background:var(--black);color:var(--cream);padding:15px 38px;font-family:var(--mono);font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:none;transition:background .25s,transform .2s;margin-top:6px}
+.f-submit:hover{background:var(--rust);transform:translateY(-2px)}
+.f-note{font-family:var(--mono);font-size:.63rem;color:var(--muted);margin-top:10px;line-height:1.75}
+.ci-strip{background:var(--rust);padding:36px 52px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.ci{color:var(--cream)}
+.ci-l{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.6);margin-bottom:7px}
+.ci-v{font-family:var(--serif);font-size:1.15rem;font-weight:700}
+.ci-s{font-family:var(--mono);font-size:.66rem;color:rgba(246,241,233,.65);margin-top:4px;line-height:1.7}
+
+/* KEYFRAMES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-r"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="go('home');return false">Karolina Scavelli</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="go('home');return false" data-p="home">Home</a></li>
+    <li><a href="#" onclick="go('portfolio');return false" data-p="portfolio">Work</a></li>
+    <li><a href="#" onclick="go('blog');return false" data-p="blog">Blog</a></li>
+    <li><a href="#" onclick="go('contact');return false" data-p="contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════
+  HOME
+══════════════════════════════════ -->
+<div id="p-home" class="page active">
+  <section class="hero">
+    <div class="hero-col">
+      <img class="hc r2" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt="">
+      <img class="hc" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt="">
+      <img class="hc" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt="">
+      <img class="hc" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt="">
+      <img class="hc" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt="">
+      <img class="hc" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt="">
+    </div>
+    <div class="hero-badge">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina">
+      <div><div class="hb-name">Karolina Scavelli</div><div class="hb-role">Graphic Designer · Los Angeles</div></div>
+    </div>
+    <div class="hero-body">
+      <p class="hero-tag">Brand Identity · Editorial · Packaging · Visual Strategy</p>
+      <h1 class="hero-h1">Designs that make<br>you say <em>that's it.</em></h1>
+      <div class="hero-foot">
+        <p class="hero-desc">Polish-born, LA-based graphic designer turning ambitious ideas into precise, unforgettable visuals. From bold logos to complete brand systems — if it needs to be seen, I'll make sure it's remembered.</p>
+        <div class="hero-acts">
+          <a href="#" onclick="go('portfolio');return false" class="btn-solid">View My Work</a>
+          <a href="#" onclick="go('contact');return false" class="btn-ghost">Let's Talk <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker"><div class="ticker-inner">
+    <span class="t-item">Brand Identity <span class="t-dot">✦</span></span><span class="t-item">Logo Design <span class="t-dot">✦</span></span><span class="t-item">Editorial Design <span class="t-dot">✦</span></span><span class="t-item">Packaging <span class="t-dot">✦</span></span><span class="t-item">Visual Strategy <span class="t-dot">✦</span></span><span class="t-item">Print & Digital <span class="t-dot">✦</span></span><span class="t-item">Typography <span class="t-dot">✦</span></span><span class="t-item">Adobe Suite <span class="t-dot">✦</span></span>
+    <span class="t-item">Brand Identity <span class="t-dot">✦</span></span><span class="t-item">Logo Design <span class="t-dot">✦</span></span><span class="t-item">Editorial Design <span class="t-dot">✦</span></span><span class="t-item">Packaging <span class="t-dot">✦</span></span><span class="t-item">Visual Strategy <span class="t-dot">✦</span></span><span class="t-item">Print & Digital <span class="t-dot">✦</span></span><span class="t-item">Typography <span class="t-dot">✦</span></span><span class="t-item">Adobe Suite <span class="t-dot">✦</span></span>
+  </div></div>
+
+  <section class="work-sec">
+    <div class="work-head reveal">
+      <div><p class="s-label">Selected Work</p><h2 class="s-title">Projects that <em>speak</em><br>for themselves</h2></div>
+      <a href="#" onclick="go('portfolio');return false" class="link-ul">View All Projects →</a>
+    </div>
+    <div class="work-grid">
+      <div class="wi reveal" style="transition-delay:.05s" onclick="go('proj-whiskey')">
+        <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt="">
+        <div class="wi-cap"><p class="wc-cat">Signage & Branding</p><p class="wc-name">Whiskey & The Goat</p><p class="wc-desc">Full signage system and brand identity for an upscale LA bar.</p></div>
+      </div>
+      <div class="wi reveal" style="transition-delay:.1s" onclick="go('proj-vitaminsea')">
+        <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt="">
+        <div class="wi-cap"><p class="wc-cat">Packaging Design</p><p class="wc-name">Vitamin Sea</p><p class="wc-desc">Bottle packaging for a wellness lifestyle brand.</p></div>
+      </div>
+      <div class="wi reveal" style="transition-delay:.15s" onclick="go('proj-renegade')">
+        <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt="">
+        <div class="wi-cap"><p class="wc-cat">Brand Identity</p><p class="wc-name">Renegade Coffee</p><p class="wc-desc">Full brand identity for a Melbourne coffee shop.</p></div>
+      </div>
+      <div class="wi reveal" style="transition-delay:.2s" onclick="go('proj-gathering')">
+        <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt="">
+        <div class="wi-cap"><p class="wc-cat">Merchandise Design</p><p class="wc-name">The Gathering Camp</p><p class="wc-desc">Tote bag and merch for an outdoor lifestyle brand.</p></div>
+      </div>
+      <div class="wi reveal" style="transition-delay:.25s" onclick="go('proj-mobile')">
+        <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt="">
+        <div class="wi-cap"><p class="wc-cat">Digital / UI Design</p><p class="wc-name">Mobile App Concept</p><p class="wc-desc">App interface and UX for a lifestyle product.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="spec">
+    <span class="spec-lbl">I work with —</span>
+    <div class="spec-items">
+      <span class="spec-item">Consumer Brands</span><span class="spec-div">✦</span>
+      <span class="spec-item">Fashion & Lifestyle</span><span class="spec-div">✦</span>
+      <span class="spec-item">Food & Hospitality</span><span class="spec-div">✦</span>
+      <span class="spec-item">Editorial & Print</span><span class="spec-div">✦</span>
+      <span class="spec-item">Startups</span><span class="spec-div">✦</span>
+      <span class="spec-item">Creative Studios</span>
+    </div>
+  </div>
+
+  <section class="about-sec">
+    <div class="about-img">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina">
+      <div class="about-foot"><div class="big-ks">KS</div><div class="loc">Los Angeles, CA</div></div>
+    </div>
+    <div class="about-txt reveal">
+      <p class="s-label">About Me</p>
+      <h2 class="s-title" style="margin-bottom:22px">Poland meets LA.<br><em>Simplicity meets sophistication.</em></h2>
+      <p class="about-body">Hi, I'm Karolina — a graphic designer based in the sunny vibes of Los Angeles, originally from Poland. I grew up where design was taught as craft: meticulous, intentional, and purposeful. When I moved to LA, I layered that European discipline with bold, energetic West Coast spirit.</p>
+      <p class="about-body">I specialize in turning ideas into eye-catching visuals — from logos to complete branding systems that leave a lasting impression. I build visual identities that help businesses communicate clearly, confidently, and memorably.</p>
+      <div class="skills">
+        <span class="sk">Adobe Illustrator</span><span class="sk">Photoshop</span><span class="sk">InDesign</span><span class="sk">Figma</span><span class="sk">Brand Strategy</span><span class="sk">Typography</span><span class="sk">Print Design</span><span class="sk">Packaging</span>
+      </div>
+      <div class="stats">
+        <div><div class="stat-n">50+</div><div class="stat-l">Projects</div></div>
+        <div><div class="stat-n">8+</div><div class="stat-l">Years Exp.</div></div>
+        <div><div class="stat-n">2</div><div class="stat-l">Continents</div></div>
+        <div><div class="stat-n">∞</div><div class="stat-l">Bold Vision</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-sec">
+    <div class="svc-head reveal"><p class="s-label" style="color:#5A5550">What I Offer</p><h2 class="s-title s-light">Transforming ideas into <em>visual impact</em></h2></div>
+    <div class="svc-grid reveal">
+      <div class="svc"><p class="svc-n">01</p><h3 class="svc-name">Brand Identity</h3><p class="svc-desc">Complete visual identity systems — from strategy and naming to logos, color palettes, and brand guidelines that keep you consistent everywhere you show up.</p><div class="svc-tags"><span class="svc-tag">Logo Design</span><span class="svc-tag">Color Systems</span><span class="svc-tag">Typography</span><span class="svc-tag">Brand Guidelines</span></div></div>
+      <div class="svc"><p class="svc-n">02</p><h3 class="svc-name">Print & Editorial</h3><p class="svc-desc">From magazines and lookbooks to marketing collateral and signage — print materials that command attention and communicate credibility.</p><div class="svc-tags"><span class="svc-tag">Magazines</span><span class="svc-tag">Brochures</span><span class="svc-tag">Posters</span><span class="svc-tag">Signage</span><span class="svc-tag">Lookbooks</span></div></div>
+      <div class="svc"><p class="svc-n">03</p><h3 class="svc-name">Packaging Design</h3><p class="svc-desc">Packaging that sells off the shelf and photographs beautifully online. Graphics and mockups for products that need to stand out in crowded markets.</p><div class="svc-tags"><span class="svc-tag">Product Packaging</span><span class="svc-tag">Label Design</span><span class="svc-tag">Mockups</span><span class="svc-tag">Retail</span></div></div>
+    </div>
+  </section>
+
+  <section class="proc-sec">
+    <div class="proc-head reveal"><p class="s-label">How I Work</p><h2 class="s-title">A process built on <em>intention</em></h2></div>
+    <div class="proc-steps reveal">
+      <div class="ps"><p class="ps-n">01 — Discovery</p><h3 class="ps-name">Listen First</h3><p class="ps-desc">Before a single pixel is placed, I dig deep into your brand, audience, goals, and competitors. Understanding always comes before creating.</p></div>
+      <div class="ps"><p class="ps-n">02 — Strategy</p><h3 class="ps-name">Define Direction</h3><p class="ps-desc">I establish the visual language — mood, tone, and reference points — so every design decision is rooted in a clear strategic foundation.</p></div>
+      <div class="ps"><p class="ps-n">03 — Design</p><h3 class="ps-name">Craft & Refine</h3><p class="ps-desc">Iterative rounds of design with your feedback woven in. I present concepts that push and options that reassure — you choose the path forward.</p></div>
+      <div class="ps"><p class="ps-n">04 — Deliver</p><h3 class="ps-name">Launch Ready</h3><p class="ps-desc">Clean file packages, print- and digital-ready assets, and full brand usage guidance. You walk away with everything you need.</p></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-left reveal"><p class="cta-label">Ready to work together?</p><h2 class="cta-title">Let's build something worth noticing.</h2><p class="cta-sub">Whether you're launching a new brand, refreshing an existing identity, or need a designer who shows up with craft and conviction — I'd love to hear from you.</p></div>
+    <div class="cta-right reveal">
+      <a href="mailto:karodukla@gmail.com" class="cta-email">karodukla@gmail.com</a>
+      <div class="soc-row"><a href="https://www.linkedin.com/in/karolina-sca/" target="_blank" class="soc">LinkedIn</a></div>
+      <a href="#" onclick="go('contact');return false" class="btn-solid" style="margin-top:4px">Start a Project →</a>
+    </div>
+  </section>
+  <footer><span>© 2025 Karolina Scavelli — Scavelli Design</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- ══════════════════════════════════
+  PORTFOLIO
+══════════════════════════════════ -->
+<div id="p-portfolio" class="page">
+  <section class="port-hero">
+    <p class="s-label">Portfolio</p>
+    <h1 class="s-title" style="font-size:clamp(3rem,5vw,4.5rem)">Work that speaks<br><em>louder than words.</em></h1>
+    <p style="font-family:var(--mono);font-size:.78rem;line-height:1.95;color:#5A5550;margin-top:16px;max-width:500px">From brand identities to packaging, editorial to digital — projects I've poured my craft into. Every piece started with a problem and ended with a solution worth seeing.</p>
+    <div class="port-filter">
+      <button class="fbtn on" onclick="filt('all',this)">All Work</button>
+      <button class="fbtn" onclick="filt('branding',this)">Branding</button>
+      <button class="fbtn" onclick="filt('packaging',this)">Packaging</button>
+      <button class="fbtn" onclick="filt('editorial',this)">Editorial</button>
+      <button class="fbtn" onclick="filt('logo',this)">Logo Design</button>
+      <button class="fbtn" onclick="filt('digital',this)">Digital</button>
+    </div>
+  </section>
+
+  <div class="port-grid">
+    <!-- Branding Design 1 — Candle Tin -->
+    <div class="pi" data-cat="branding" onclick="go('proj-candle')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709853174114-H9T69P2R4B5F14YCTXYX/Wax-Candle-Tin-Mockup.jpg" alt="Candle Brand">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Branding & Packaging</p><p class="pi-name">Candle Brand Identity</p><p class="pi-desc">Packaging and label design for an artisan candle brand.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Branding Design 2 — T-Shirt -->
+    <div class="pi" data-cat="branding" onclick="go('proj-tshirt')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709867685562-SMUIAN0IVO6MFGVKHCIJ/tshirt.jpg" alt="T-Shirt Brand">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Apparel & Branding</p><p class="pi-name">Apparel Brand Design</p><p class="pi-desc">Brand identity and apparel design for a clothing label.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Branding Design 3 — Mockup -->
+    <div class="pi" data-cat="branding" onclick="go('proj-mockup')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709867870954-HQ586XTU16NKEWNL275F/mockup.jpg" alt="Brand Mockup">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Brand Identity</p><p class="pi-name">Brand Identity System</p><p class="pi-desc">Full brand identity and collateral design system.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Branding Design 4 — Nail Polish -->
+    <div class="pi" data-cat="packaging" onclick="go('proj-nailpolish')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709867980942-VC3TAXO0QPH13YV6OBM1/Nail+Polish+Bottles.jpg" alt="Nail Polish">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Packaging Design</p><p class="pi-name">Nail Polish Collection</p><p class="pi-desc">Label and packaging design for a cosmetics product line.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Branding Design 5 — Whiskey Sign -->
+    <div class="pi" data-cat="branding" onclick="go('proj-whiskey')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt="Whiskey & The Goat">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Signage & Branding</p><p class="pi-name">Whiskey & The Goat</p><p class="pi-desc">Full signage system and brand identity for an upscale LA bar.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Branding Design 6 — Bag -->
+    <div class="pi" data-cat="packaging" onclick="go('proj-gathering')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709939995657-JRVNQE14PB63MEBISKLI/bagmockup.jpg" alt="The Gathering Camp">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Merchandise & Packaging</p><p class="pi-name">The Gathering Camp</p><p class="pi-desc">Tote bag and merchandise suite for an outdoor lifestyle brand.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Logo Design 1 — Root & Branch -->
+    <div class="pi" data-cat="logo" onclick="go('proj-rootbranch')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709928315668-EEF0XUAMTWPJLRMXUQBQ/rootandbranchBC-1.jpg" alt="Root and Branch">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Logo Design</p><p class="pi-name">Root & Branch</p><p class="pi-desc">Logo and business card design for a botanical brand.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Logo Design 2 -->
+    <div class="pi" data-cat="logo" onclick="go('proj-logo2')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709928735322-R3S0HJ6H31A397L2CNXH/Untitled-2.png" alt="Logo Design">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Logo Design</p><p class="pi-name">Logo Design Collection</p><p class="pi-desc">Custom logo design and mark development.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Logo Design 3 — Sweet Melt -->
+    <div class="pi" data-cat="logo" onclick="go('proj-sweetmelt')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709939773940-IZ4SKVC877QXTLM2CID2/sweetmeltmockup.jpg" alt="Sweet Melt">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Logo & Packaging</p><p class="pi-name">Sweet Melt</p><p class="pi-desc">Logo design and packaging mockup for a confectionery brand.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Magazine Covers -->
+    <div class="pi" data-cat="editorial" onclick="go('proj-magazine')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709939575613-JO50UMASH2JOWIS3C9LP/MagazineAd.jpg" alt="Magazine">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Editorial Design</p><p class="pi-name">Magazine Covers</p><p class="pi-desc">Editorial layout and magazine cover design.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Brochure Design 1 -->
+    <div class="pi" data-cat="editorial" onclick="go('proj-brochure1')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709941314337-4REJ5FQ0VBFIPTV1BRZ9/1208+-+1209+Gaviota+Brochure+Final+2021+for+Packaging+02.01.232.jpg" alt="Brochure 1">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Print Design</p><p class="pi-name">Gaviota Brochure</p><p class="pi-desc">Professional brochure design and print-ready layout.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Brochure Design 2 -->
+    <div class="pi" data-cat="editorial" onclick="go('proj-brochure2')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/bf86bbf0-f1da-455e-828f-dabce724b646/brochure+2.jpg" alt="Brochure 2">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Print Design</p><p class="pi-name">Brochure Design 2</p><p class="pi-desc">Multi-page brochure design for a professional services brand.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Brochure Design 3 -->
+    <div class="pi" data-cat="editorial" onclick="go('proj-brochure3')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1734727365902-RWNVK3SV2TFEA31CL0UZ/Screen+Shot+2024-12-20+at+12.33.21+PM.jpg" alt="Brochure 3">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Print Design</p><p class="pi-name">Brochure Design 3</p><p class="pi-desc">Editorial layout and brochure design for a client presentation.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Trifold Brochure -->
+    <div class="pi" data-cat="editorial" onclick="go('proj-trifold')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1710887358035-KZJJLRYJ35DJ11XQD33B/1.png" alt="Trifold">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Print Design</p><p class="pi-name">Trifold Brochure</p><p class="pi-desc">Trifold brochure design with full print-ready specifications.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Vitamin Sea -->
+    <div class="pi" data-cat="packaging" onclick="go('proj-vitaminsea')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt="Vitamin Sea">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Packaging Design</p><p class="pi-name">Vitamin Sea</p><p class="pi-desc">Bottle packaging and label design for a wellness brand.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Renegade Coffee -->
+    <div class="pi" data-cat="branding" onclick="go('proj-renegade')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt="Renegade Coffee">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Brand Identity</p><p class="pi-name">Renegade Coffee & Bakery</p><p class="pi-desc">Complete brand identity for a Melbourne coffee shop.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Mobile App -->
+    <div class="pi" data-cat="digital" onclick="go('proj-mobile')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt="Mobile App">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Digital / UI Design</p><p class="pi-name">Mobile App Concept</p><p class="pi-desc">App interface and mobile UX for a lifestyle product.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+    <!-- Paris -->
+    <div class="pi" data-cat="editorial" onclick="go('proj-paris')">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt="Paris">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Editorial & Photography</p><p class="pi-name">Paris — Visual Essay</p><p class="pi-desc">Editorial photography capturing the visual language of Paris.</p><button class="pi-btn">View Case Study →</button></div></div>
+    </div>
+  </div>
+
+  <section class="port-feat">
+    <p class="s-label" style="color:#5A5550">Featured Projects</p>
+    <h2 class="s-title s-light" style="margin-top:0">The work I'm most <em>proud of</em></h2>
+    <div class="pf-grid">
+      <div class="pfi" onclick="go('proj-whiskey')"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt=""><div class="pfi-info"><p class="pfi-cat">Branding</p><p class="pfi-name">Whiskey & The Goat</p><p class="pfi-sub">Full signage, identity, and collateral for an LA bar concept</p></div></div>
+      <div class="pfi" onclick="go('proj-renegade')"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt=""><div class="pfi-info"><p class="pfi-cat">Brand Identity</p><p class="pfi-name">Renegade Coffee & Bakery</p><p class="pfi-sub">Complete brand system for a Melbourne coffee shop</p></div></div>
+    </div>
+  </section>
+  <section class="cta-band"><div class="cta-left"><p class="cta-label">Like what you see?</p><h2 class="cta-title">Your project could be next.</h2><p class="cta-sub">Every great brand started with one conversation. Let's start ours.</p></div><div class="cta-right"><a href="#" onclick="go('contact');return false" class="btn-solid" style="background:var(--cream);color:var(--black)">Start a Project →</a></div></section>
+  <footer><span>© 2025 Karolina Scavelli — Scavelli Design</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- ══════════════════════════════════
+  PROJECT DETAIL PAGES (5 projects)
+══════════════════════════════════ -->
+<!-- Whiskey & The Goat -->
+<div id="p-proj-whiskey" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back"><span class="arr" style="transform:rotate(180deg) translateY(0)">←</span> Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt="Whiskey & The Goat">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">Whiskey & The Goat</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Signage & Brand Identity</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo, Signage, Brand Guidelines, Collateral</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Whiskey & <em>The Goat</em></h1>
+        <p class="proj-body">Whiskey & The Goat came to me with a concept: a warm, upscale bar that felt like it belonged in a converted warehouse in the Arts District — dark wood, amber light, a menu that took whiskey seriously. They needed an identity that matched the mood before anyone walked through the door.</p>
+        <p class="proj-body">The challenge was balancing rugged masculinity with refined elegance. The goat icon — rendered with fine lines and precise geometry — became the anchor. It's confident without being aggressive, distinctive without being gimmicky.</p>
+        <div class="proj-quote">"The sign stopped people on the street before we even opened. That's exactly what we needed — Karolina nailed the vibe."</div>
+        <p class="proj-body">The typeface pairing uses a custom serif for the wordmark and a clean grotesque for supporting text — letting the logo breathe while maintaining hierarchy across all touchpoints: menus, signage, coasters, and digital assets.</p>
+        <div class="proj-imgs">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt="">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt="">
+        </div>
+        <p class="proj-body">Color palette: near-black background, off-white typography, and a warm gold accent used sparingly for hierarchy. Everything was built to look intentional in low light — because that's where the brand actually lives.</p>
+        <div class="proj-next">
+          <div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-vitaminsea')">Vitamin Sea → Packaging Design</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Vitamin Sea -->
+<div id="p-proj-vitaminsea" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt="Vitamin Sea">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">Vitamin Sea — Maldives</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Packaging Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Bottle Label, Packaging System, Brand Identity</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Vitamin Sea — <em>Maldives</em></h1>
+        <p class="proj-body">Vitamin Sea is a wellness brand rooted in ocean energy — inspired by the Maldives, designed for people who treat their health like a ritual. The brief was clear: make it feel like water. Make it feel like calm. Make it feel like something you'd keep on your bathroom shelf because it looks too beautiful to hide.</p>
+        <p class="proj-body">The lotus mark at the center of the label carries the brand's philosophy: purity, balance, growth. Drawn with clean circular geometry and rendered in the brand's signature teal, it anchors the design without overwhelming the soft peach bottle tone.</p>
+        <div class="proj-quote">"The packaging became part of our product story. Customers photograph it constantly — it practically markets itself."</div>
+        <p class="proj-body">Typography is intentionally restrained. The brand name in a delicate serif, location text in spaced capitals — letting the color and mark do the heavy lifting. The result is packaging that looks premium at every price point.</p>
+        <div class="proj-imgs">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt="">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt="">
+        </div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-renegade')">Renegade Coffee → Brand Identity</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Renegade Coffee -->
+<div id="p-proj-renegade" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt="Renegade Coffee">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">Renegade Coffee & Bakery</div></div>
+        <div><div class="pm-label">Location</div><div class="pm-val">Melbourne, Australia</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Brand Identity & Packaging</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo, Cup Design, Brand System, Merch</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title"><em>Renegade</em> Coffee & Bakery</h1>
+        <p class="proj-body">Melbourne's coffee culture is unforgiving. Walk-ins expect more than a good flat white — they want an experience. Renegade came to me wanting a brand that felt like its name: independent, bold, a little rough around the edges but unmistakably quality.</p>
+        <p class="proj-body">The wordmark leans into vintage Americana — a nod to the American diner influence behind their bakery menu — but the execution is clean enough to live comfortably on a specialty coffee cup. The wheat graphic beneath the lettering connects coffee and bakery under a single visual idea: craft from the earth up.</p>
+        <div class="proj-quote">"Our cups became the most photographed thing in the café. People tag us without being asked."</div>
+        <p class="proj-body">The warm terracotta brown and cream palette made the brand feel approachable, warm, and instantly at home on Melbourne's laneways. The full system included cup design, paper bags, signage, staff uniforms, and a digital brand guide.</p>
+        <div class="proj-imgs">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt="">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt="">
+        </div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-gathering')">The Gathering Camp → Merch Design</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- The Gathering Camp -->
+<div id="p-proj-gathering" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt="The Gathering Camp">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">The Gathering Camp</div></div>
+        <div><div class="pm-label">Location</div><div class="pm-val">Vancouver, BC</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Merchandise & Brand Identity</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo, Tote Bag, Merch System, Brand Guide</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">The Gathering <em>Camp</em></h1>
+        <p class="proj-body">The Gathering Camp runs outdoor retreat experiences in the mountains of Vancouver — a community for people who believe that the best conversations happen around a campfire. Their brand needed to feel like that: warm, adventurous, slightly weathered in the best way.</p>
+        <p class="proj-body">The tent icon was designed to feel hand-rendered — like it was sketched in a field journal. Clean enough to work on merch, warm enough to feel human. Set against the natural cream of the canvas tote, it communicates everything about the brand without a word.</p>
+        <div class="proj-quote">"The tote became our best piece of marketing. Customers wore it to farmer's markets, yoga classes, everywhere. It's a walking billboard we're actually proud of."</div>
+        <p class="proj-body">The logotype uses a flowing, slightly casual serif that feels natural rather than corporate. Paired with the subtlety of "Mountains of Vancouver" in spaced small caps, the hierarchy is clear and the brand message lands immediately.</p>
+        <div class="proj-imgs">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt="">
+          <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt="">
+        </div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-mobile')">Mobile App Concept → UI Design</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Mobile App -->
+<div id="p-proj-mobile" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt="Mobile App">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Project</div><div class="pm-val">Lifestyle App Concept</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Digital / UI Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">UI Design, Brand Identity, Mockups</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Mobile App <em>Concept</em></h1>
+        <p class="proj-body">This project was a self-initiated concept exploring how brand identity principles translate to digital product design. The brief I set myself: design a lifestyle app that feels as premium as the brands I create identities for — not a generic UI, but something with a real visual point of view.</p>
+        <p class="proj-body">The result combines strong typographic hierarchy, a restrained but warm color palette, and interface elements that feel crafted rather than templated. Every screen was designed as if it were a print piece first — then adapted for the digital context.</p>
+        <div class="proj-quote">Good digital design isn't different from good print design. It's the same discipline — just with different constraints.</div>
+        <p class="proj-body">This project reinforced something I believe deeply: the best digital products feel intentional at every touchpoint. Not just the hero screen, but the loading states, the empty states, the micro-interactions. Brand lives in the details.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-paris')">Paris Visual Essay → Editorial</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Paris Essay -->
+<div id="p-proj-paris" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt="Paris">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Project</div><div class="pm-val">Paris — Visual Essay</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Editorial & Photography</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Photography, Layout Design, Print Editorial</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Paris — <em>Visual Essay</em></h1>
+        <p class="proj-body">Every city has a visual language. Paris speaks in limestone, iron, and fading afternoon light. This personal project was an attempt to document that language — not the tourist's Paris, but the designer's Paris. The typefaces on the shopfronts. The way posters layer on walls. The proportion of a Haussmann facade.</p>
+        <p class="proj-body">The photography was shot across four days and curated to build a cohesive visual narrative — colour palette first, then composition, then sequence. The editorial layout was designed as a potential magazine feature: full bleeds balanced with white space, captions in spaced mono, pull quotes in italic serif.</p>
+        <div class="proj-quote">Travel doesn't just inspire my work — it rewires how I see. Every city I visit teaches me something about visual communication I couldn't learn in a studio.</div>
+        <p class="proj-body">This project feeds directly into client work. Understanding how environments build visual identity — how a city communicates its personality through design — makes me a better brand designer for any kind of business.</p>
+        <div class="proj-next"><div><div class="pn-label">Back to Start</div><div class="pn-name" onclick="go('proj-whiskey')">Whiskey & The Goat → Branding</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Candle Brand -->
+<div id="p-proj-candle" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709853174114-H9T69P2R4B5F14YCTXYX/Wax-Candle-Tin-Mockup.jpg" alt="Candle Brand">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Branding & Packaging</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Label Design, Tin Packaging, Brand Identity</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Candle Brand <em>Identity</em></h1>
+        <p class="proj-body">Artisan candles live or die by their packaging. The product itself is invisible until lit — what sells it is the vessel, the label, and the story those communicate before anyone strikes a match. This project was about creating a brand identity that felt as warm and considered as the product inside.</p>
+        <p class="proj-body">The tin format gave us a beautiful canvas — cylindrical, tactile, premium. The label design wraps the tin with a restrained typographic treatment and a muted color palette that communicates craft without shouting about it. Every detail, from the font choice to the label finish, was chosen to reinforce the same feeling: slow, intentional, quality.</p>
+        <div class="proj-quote">"The packaging made our product feel like a gift even before it was wrapped. That's everything."</div>
+        <p class="proj-body">The brand system extended to tags, tissue paper inserts, and a simple brand guidelines document covering color, type, and photography direction — giving the client everything they need to stay consistent as the product line grows.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-tshirt')">Apparel Brand Design →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- T-Shirt / Apparel Brand -->
+<div id="p-proj-tshirt" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709867685562-SMUIAN0IVO6MFGVKHCIJ/tshirt.jpg" alt="Apparel Brand">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Apparel & Brand Identity</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo, Apparel Design, Brand System</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Apparel Brand <em>Design</em></h1>
+        <p class="proj-body">Clothing is one of the most personal brand touchpoints that exists — it's identity worn literally on the body. This apparel branding project required a mark that was strong enough to stand alone on a garment without any supporting context, while still communicating the brand's complete personality.</p>
+        <p class="proj-body">The design process centered on the garment first — testing mark scale, placement, and color against actual fabric textures and cuts before finalizing anything. A logo that looks great on screen and falls apart on a t-shirt is a failure. Every decision here was made in the context of the final product.</p>
+        <div class="proj-quote">Apparel design is the most unforgiving branding discipline. The product is the billboard.</div>
+        <p class="proj-body">The resulting brand system covers primary and secondary marks, color-on-color applications for different garment tones, embroidery vs. print specifications, and a lookbook direction that shows the brand in context.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-mockup')">Brand Identity System →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Brand Identity System Mockup -->
+<div id="p-proj-mockup" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709867870954-HQ586XTU16NKEWNL275F/mockup.jpg" alt="Brand Identity System">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Brand Identity</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Full Brand System, Stationery, Collateral</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Brand Identity <em>System</em></h1>
+        <p class="proj-body">A complete brand identity system is more than a logo — it's a set of rules and tools that allows a brand to communicate consistently across every touchpoint, by anyone, forever. This project delivered exactly that: a comprehensive visual system built to scale.</p>
+        <p class="proj-body">The system covers primary and secondary logos, color palette with accessibility specifications, typography hierarchy, iconography style, photography direction, and a detailed usage guide. Every element was stress-tested across real-world applications — business cards, letterheads, signage, digital templates — before being finalized.</p>
+        <div class="proj-quote">A brand system is an investment. Done right, it pays dividends every single time someone encounters the brand.</div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-nailpolish')">Nail Polish Collection →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Nail Polish -->
+<div id="p-proj-nailpolish" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709867980942-VC3TAXO0QPH13YV6OBM1/Nail+Polish+Bottles.jpg" alt="Nail Polish">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Packaging Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Label Design, Packaging System, Product Line</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Nail Polish <em>Collection</em></h1>
+        <p class="proj-body">Cosmetics packaging exists in one of the most visually competitive retail environments on earth. The challenge here was designing labels for a nail polish collection that would communicate color, mood, and brand personality simultaneously — all within the constraints of a small, cylindrical bottle.</p>
+        <p class="proj-body">The design leans into the color itself as the primary brand statement. Labels are minimal and elegant — letting the product do the talking while the typography and finish add the premium layer. Each color in the collection received a name and a micro-designed label that connects the product to an emotional territory.</p>
+        <div class="proj-quote">In cosmetics, restraint is luxury. The brands that do the least on the label signal the most confidence in the product.</div>
+        <p class="proj-body">The system was designed to work across a full collection range — consistent enough to read as a family on shelf, distinct enough that each individual product has its own personality.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-rootbranch')">Root & Branch Logo →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Root & Branch -->
+<div id="p-proj-rootbranch" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709928315668-EEF0XUAMTWPJLRMXUQBQ/rootandbranchBC-1.jpg" alt="Root and Branch">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">Root & Branch</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Logo Design & Stationery</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo, Business Cards, Brand Identity</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Root & <em>Branch</em></h1>
+        <p class="proj-body">Root & Branch is a botanical brand rooted in the philosophy that everything living — businesses included — grows from strong foundations. The name gave us an immediate visual direction: organic, grounded, growing. The challenge was executing that concept with refinement rather than falling into clichéd "nature brand" territory.</p>
+        <p class="proj-body">The mark abstracts the idea of roots and branches into a geometric form that works equally well at business card size and signage scale. Set in a warm off-black against cream, it communicates craft and care without over-explaining itself. The business card design extended the identity with a clean, confident layout that treats the logo as the focal point.</p>
+        <div class="proj-quote">"Simple, memorable, and instantly ours. Exactly what we asked for and more than we expected."</div>
+        <p class="proj-body">The complete identity package included primary and secondary logos, business cards, email signature, and a one-page brand guideline covering all usage rules.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-sweetmelt')">Sweet Melt →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Logo Design 2 -->
+<div id="p-proj-logo2" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709928735322-R3S0HJ6H31A397L2CNXH/Untitled-2.png" alt="Logo Design">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Logo Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo Suite, Mark Development, Usage Guide</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Logo Design <em>Collection</em></h1>
+        <p class="proj-body">Logo design at its best is deceptively simple — the product of an enormous amount of thinking condensed into a single, elegant form. This project showcases the mark development process: from initial concepts through refinement to a final logo system that works across every context.</p>
+        <p class="proj-body">The development process explored multiple directions before converging on a solution that balanced the client's need for memorability with the practical demands of real-world application. Every mark was tested at favicon size, embroidery scale, and large-format print before being signed off.</p>
+        <div class="proj-quote">A great logo looks inevitable in retrospect. Getting there is never inevitable.</div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-sweetmelt')">Sweet Melt →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Sweet Melt -->
+<div id="p-proj-sweetmelt" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709939773940-IZ4SKVC877QXTLM2CID2/sweetmeltmockup.jpg" alt="Sweet Melt">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">Sweet Melt</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Logo & Packaging</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Logo, Packaging Mockup, Brand Identity</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Sweet <em>Melt</em></h1>
+        <p class="proj-body">Sweet Melt is a confectionery brand built around the idea that indulgence should be beautiful. The brief was to create a brand identity that felt playful and inviting without being childish — a brand that appeals to adults who take their treats seriously.</p>
+        <p class="proj-body">The logo mark plays with the idea of melting — fluidity and warmth built into the letterforms themselves. The color palette uses warm, saturated tones that signal sweetness and energy while maintaining the visual sophistication the brand needed to stand out in a premium market.</p>
+        <div class="proj-quote">Sweet things deserve beautiful design. This is a brand that respects its own product.</div>
+        <p class="proj-body">The packaging mockup brought the identity to life — showing how the brand would sit on a shelf, wrapped around a product, and shared on social media. The packaging design is designed to be photographed, shared, and remembered.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-magazine')">Magazine Covers →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Magazine Covers -->
+<div id="p-proj-magazine" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709939575613-JO50UMASH2JOWIS3C9LP/MagazineAd.jpg" alt="Magazine Covers">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Editorial Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Magazine Covers, Ad Layouts, Editorial Design</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Magazine <em>Covers</em></h1>
+        <p class="proj-body">Editorial design is a discipline that demands a particular kind of visual intelligence — the ability to balance information hierarchy, aesthetic impact, and reader attention across a spread that competes with everything else on a newsstand or screen. Magazine cover design is that challenge at its most intense: one image, one moment, everything at stake.</p>
+        <p class="proj-body">This project involved designing magazine covers and advertising layouts that needed to work within an established editorial visual language while still standing out. The covers use bold typography, considered photography cropping, and a restrained color palette to create covers that feel editorial rather than promotional.</p>
+        <div class="proj-quote">A great magazine cover makes you pick it up. A great layout makes you stay.</div>
+        <p class="proj-body">The advertising layouts within the publication applied the same editorial sensibility — ensuring that the ads felt at home in the publication rather than interrupting it, while still achieving their commercial objectives.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-brochure1')">Gaviota Brochure →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Brochure 1 — Gaviota -->
+<div id="p-proj-brochure1" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709941314337-4REJ5FQ0VBFIPTV1BRZ9/1208+-+1209+Gaviota+Brochure+Final+2021+for+Packaging+02.01.232.jpg" alt="Gaviota Brochure">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Client</div><div class="pm-val">Gaviota</div></div>
+        <div><div class="pm-label">Category</div><div class="pm-val">Print & Brochure Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Brochure, Print-Ready Files, Layout Design</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2023</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Gaviota <em>Brochure</em></h1>
+        <p class="proj-body">The Gaviota brochure was a real estate and lifestyle publication piece requiring a design that communicated the premium quality of the properties while remaining approachable and warm. The challenge: make something that feels expensive without feeling cold.</p>
+        <p class="proj-body">The layout design uses generous white space, large photography, and a typographic hierarchy that guides the reader naturally through the content. Section breaks are marked with subtle color and geometric details rather than heavy rules — keeping the overall feel light and breathable.</p>
+        <div class="proj-quote">Print design done well makes you want to hold it. This brochure was designed to be kept, not discarded.</div>
+        <p class="proj-body">All files were delivered print-ready with full bleed specifications, CMYK color profiles, and a printer's guide — ensuring the final printed piece matched the design intent exactly.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-brochure2')">Brochure Design 2 →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Brochure 2 -->
+<div id="p-proj-brochure2" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/bf86bbf0-f1da-455e-828f-dabce724b646/brochure+2.jpg" alt="Brochure 2">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Print Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Multi-Page Brochure, Print-Ready Files</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Brochure <em>Design</em></h1>
+        <p class="proj-body">This multi-page brochure project combined strong photography art direction with a clean, professional layout that needed to work across both print and digital PDF formats. The challenge was designing a system that looked equally considered on screen as it did in hand.</p>
+        <p class="proj-body">The grid system uses a structured six-column layout that creates natural rhythm across spreads while allowing flexibility for full-bleed photography sections and dense text pages. Color is used sparingly — accent only — keeping focus on content and imagery throughout.</p>
+        <div class="proj-quote">The best brochure layouts disappear. The reader never notices the grid — they just notice that everything feels right.</div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-brochure3')">Brochure Design 3 →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Brochure 3 -->
+<div id="p-proj-brochure3" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1734727365902-RWNVK3SV2TFEA31CL0UZ/Screen+Shot+2024-12-20+at+12.33.21+PM.jpg" alt="Brochure 3">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Print Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Brochure Layout, Print-Ready Files</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Brochure Design <em>3</em></h1>
+        <p class="proj-body">A presentation brochure designed for a professional services client requiring a document that communicated competence, trust, and quality at a glance. The reader needed to feel confident before reading a single word — which meant the design had to earn credibility through proportion, typography, and restraint.</p>
+        <p class="proj-body">The layout uses a two-column structure for body sections with full-bleed cover and section dividers. Typography is set in a classical serif for headings — conveying heritage and authority — paired with a clean grotesque for body text that keeps long-form content readable and professional.</p>
+        <div class="proj-quote">Professional services brands need design that says: we take quality seriously. In everything.</div>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-trifold')">Trifold Brochure →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Trifold Brochure -->
+<div id="p-proj-trifold" class="page">
+  <div class="proj-detail">
+    <a href="#" onclick="go('portfolio');return false" class="btn-back">← Back to Work</a>
+    <img class="proj-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1710887358035-KZJJLRYJ35DJ11XQD33B/1.png" alt="Trifold Brochure">
+    <div class="proj-layout">
+      <div class="proj-meta">
+        <div><div class="pm-label">Category</div><div class="pm-val">Print Design</div></div>
+        <div><div class="pm-label">Deliverables</div><div class="pm-val">Trifold Layout, Print-Ready Files, Digital Version</div></div>
+        <div><div class="pm-label">Year</div><div class="pm-val">2024</div></div>
+      </div>
+      <div class="proj-content">
+        <h1 class="proj-title">Trifold <em>Brochure</em></h1>
+        <p class="proj-body">The trifold format is one of the most demanding in print design — six panels, strict fold tolerances, and the challenge of creating a reading experience that works both closed and fully opened. Done poorly it feels cheap. Done well it's a piece people keep.</p>
+        <p class="proj-body">This trifold was designed with the reveal in mind: the cover panel makes the first impression, the inner spread delivers the full story, and every panel transition feels considered. Color and photography bleed across panels to create visual continuity even as the format creates natural separations.</p>
+        <div class="proj-quote">A trifold is a tiny theater. Every panel is a scene. The design should make people want to turn the page.</div>
+        <p class="proj-body">Technical deliverables included print-ready PDFs with crop marks and bleed, a digital screen-optimized version, and a template file for future content updates — ensuring the client's investment in the design continues to deliver value beyond the first print run.</p>
+        <div class="proj-next"><div><div class="pn-label">Next Project</div><div class="pn-name" onclick="go('proj-whiskey')">Whiskey & The Goat →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- ══════════════════════════════════
+  BLOG
+══════════════════════════════════ -->
+<div id="p-blog" class="page">
+  <section class="blog-hero">
+    <p class="s-label">The Blog</p>
+    <h1 class="s-title s-light" style="font-size:clamp(3rem,5vw,4.5rem);margin-bottom:16px">Thoughts on <em>design,</em><br>craft & creativity.</h1>
+    <p style="font-family:var(--mono);font-size:.78rem;line-height:1.95;color:rgba(246,241,233,.6);max-width:460px">Musings on typography, brand strategy, the LA design scene, and what it means to create work that actually matters.</p>
+  </section>
+
+  <section class="blog-feat reveal">
+    <div class="bf-img"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt=""></div>
+    <div>
+      <p class="bf-cat">✦ Featured Post · Typography</p>
+      <h2 class="bf-title" onclick="go('art-fonts')">My Favorite Adobe Fonts for Logo Design</h2>
+      <p class="bf-date">February 2025 · 6 min read</p>
+      <p class="bf-desc">Typography is the backbone of every strong logo. The right typeface communicates personality, builds trust, and establishes hierarchy before a single word is read. Here are the Adobe Fonts I keep coming back to for brand identity work.</p>
+      <button class="btn-ghost" onclick="go('art-fonts')">Read Full Article <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <div style="height:1px;background:var(--warm);margin:0 52px"></div>
+
+  <section class="blog-grid-sec">
+    <div class="bg-head reveal"><div><p class="s-label">All Posts</p><h2 class="s-title">More from <em>the studio</em></h2></div></div>
+    <div class="blog-cards reveal">
+      <div class="bc" onclick="go('art-branding')">
+        <div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt=""></div>
+        <div class="bc-body"><p class="bc-cat">Brand Strategy</p><h3 class="bc-title">What Makes a Brand Identity Actually Work</h3><p class="bc-date">January 2025 · 5 min read</p><p class="bc-desc">It's not just about looking good — great brand identity is about making the right people feel something. Here's what separates forgettable from iconic.</p><button class="bc-link">Read Article <span class="arr">→</span></button></div>
+      </div>
+      <div class="bc" onclick="go('art-travel')">
+        <div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt=""></div>
+        <div class="bc-body"><p class="bc-cat">Inspiration</p><h3 class="bc-title">How Travel Shapes My Design Perspective</h3><p class="bc-date">December 2024 · 4 min read</p><p class="bc-desc">From Warsaw to Los Angeles to Paris — every city has left its mark on how I see color, space, and composition. Here's how wandering makes me a better designer.</p><button class="bc-link">Read Article <span class="arr">→</span></button></div>
+      </div>
+      <div class="bc" onclick="go('art-packaging')">
+        <div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt=""></div>
+        <div class="bc-body"><p class="bc-cat">Packaging</p><h3 class="bc-title">Designing Packaging That Sells on Sight</h3><p class="bc-date">November 2024 · 7 min read</p><p class="bc-desc">You have 3 seconds on a shelf. Here's everything I've learned about designing packaging that stops people mid-scroll and gets them to reach for it.</p><button class="bc-link">Read Article <span class="arr">→</span></button></div>
+      </div>
+      <div class="bc" onclick="go('art-discovery')">
+        <div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt=""></div>
+        <div class="bc-body"><p class="bc-cat">Process</p><h3 class="bc-title">Why I Ask So Many Questions Before I Design</h3><p class="bc-date">October 2024 · 4 min read</p><p class="bc-desc">Before I open Illustrator I spend hours asking questions most designers skip. Here's why the best design work starts with listening, not sketching.</p><button class="bc-link">Read Article <span class="arr">→</span></button></div>
+      </div>
+      <div class="bc" onclick="go('art-logo-mistakes')">
+        <div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt=""></div>
+        <div class="bc-body"><p class="bc-cat">Design Tips</p><h3 class="bc-title">Logo Design Mistakes That Hurt Your Brand</h3><p class="bc-date">September 2024 · 5 min read</p><p class="bc-desc">I see the same logo mistakes over and over. Trendy fonts, complex marks, zero scalability. Here's what to avoid — and what to do instead.</p><button class="bc-link">Read Article <span class="arr">→</span></button></div>
+      </div>
+      <div class="bc" onclick="go('art-studio')">
+        <div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt=""></div>
+        <div class="bc-body"><p class="bc-cat">Studio Life</p><h3 class="bc-title">What a Day in My LA Design Studio Looks Like</h3><p class="bc-date">August 2024 · 3 min read</p><p class="bc-desc">Coffee, sunlight, Spotify, and a lot of Illustrator. A peek into the daily rhythm of running a solo design studio from sunny Los Angeles.</p><button class="bc-link">Read Article <span class="arr">→</span></button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topics reveal">
+    <p class="s-label">Browse by Topic</p>
+    <h2 class="s-title">Find what <em>interests you</em></h2>
+    <div class="topics-grid">
+      <div class="tp" onclick="go('art-fonts')"><div class="tp-icon">✏️</div><div class="tp-name">Typography</div><div class="tp-count">4 articles</div></div>
+      <div class="tp" onclick="go('art-branding')"><div class="tp-icon">🎨</div><div class="tp-name">Brand Strategy</div><div class="tp-count">6 articles</div></div>
+      <div class="tp" onclick="go('art-packaging')"><div class="tp-icon">📦</div><div class="tp-name">Packaging</div><div class="tp-count">3 articles</div></div>
+      <div class="tp" onclick="go('art-travel')"><div class="tp-icon">✈️</div><div class="tp-name">Inspiration</div><div class="tp-count">5 articles</div></div>
+    </div>
+  </section>
+  <footer><span>© 2025 Karolina Scavelli — Scavelli Design</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- ══════════════════════════════════
+  BLOG ARTICLES (6 full articles)
+══════════════════════════════════ -->
+<!-- Article: Fonts -->
+<div id="p-art-fonts" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Typography</p>
+    <h1 class="art-title">My Favorite Adobe Fonts for Logo Design</h1>
+    <div class="art-meta"><span>📅 February 2025</span><span>⏱ 6 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/27ab0adb-4975-4f38-9a9d-bba62589d523/mockupsign.jpg" alt="">
+    <div class="art-body">
+      <p>Typography is the backbone of every strong logo. Before color, before iconography, before anything else — the typeface is making a statement about who a brand is. Get it right and everything else falls into place. Get it wrong and no amount of clever art direction will save you.</p>
+      <p>I've spent years working through hundreds of typefaces for client projects. Over time, a core set of Adobe Fonts keeps rising to the top. Not because they're trendy — in fact, I actively avoid the trendy ones — but because they're *useful*. Versatile. Honest. The kind of fonts that work at 300px on a billboard and 12px on a business card.</p>
+      <div class="art-pull">A great logo font isn't the one everyone is using this year. It's the one that will still feel right in fifteen years.</div>
+      <h2>1. Freight Display — For Brands That Need Authority</h2>
+      <p>Freight Display is a workhorse disguised as a thoroughbred. It carries the refinement of a traditional editorial serif but with just enough contemporary personality to feel current. I reach for it when a client wants to feel established, credible, and confident without being stiff. Law firms, lifestyle brands, consultancies, hotels — Freight Display earns its place every time.</p>
+      <h2>2. Aktiv Grotesk — For Modern, Clean, Functional Marks</h2>
+      <p>Aktiv Grotesk is what happens when Helvetica goes to therapy and figures out its issues. It has that same authoritative neutrality but with better spacing, cleaner curves, and a warmth that Helvetica never quite had. For tech brands, health brands, and anything that needs to feel modern without feeling cold, this is my go-to.</p>
+      <h2>3. Canela — For the Brand That Has Taste</h2>
+      <p>Canela sits at the intersection of editorial and fashion. It has this beautiful tension between the delicate and the bold — thin hairlines next to confident strokes. When a client tells me they want to feel "elevated" or "curated," I start with Canela. It consistently delivers the feeling of a brand that has developed actual taste.</p>
+      <h2>4. Termina — For Geometric Confidence</h2>
+      <p>If a brand needs to project strength, precision, and forward motion, Termina is the answer. Its geometric construction gives it a structural integrity that few display fonts can match. I use it for brands in architecture, fitness, and technology — anywhere that the visual language needs to feel built, not decorative.</p>
+      <h2>5. Orpheus Pro — For Heritage and Craft</h2>
+      <p>Orpheus Pro is the font I reach for when a brand has history, or wants to feel like it does. It has the kind of character that takes decades to develop — serifs with slight quirks, letterforms that feel like they were cut with intention. For artisan food brands, heritage retailers, and wine labels, nothing beats it.</p>
+      <h2>The Bottom Line</h2>
+      <p>The best font for your logo is never the most beautiful one in isolation — it's the one that communicates the right thing about your brand to the right person at the right moment. That's a strategic decision as much as an aesthetic one. And it's exactly why typography is the first conversation I have with every new client.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Typography</span><span class="art-tag">Logo Design</span><span class="art-tag">Brand Identity</span><span class="art-tag">Adobe Fonts</span></div>
+    <div class="art-author">
+      <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina">
+      <div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles, originally from Poland. Specializing in brand identity, packaging, and editorial design. Building visual identities that communicate clearly and memorably.</div></div>
+    </div>
+    <div class="art-more"><p class="s-label">Read Next</p><h2 class="s-title" style="margin-bottom:24px">More from <em>the studio</em></h2>
+    <div class="art-more-grid">
+      <div class="bc" onclick="go('art-branding')"><div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt=""></div><div class="bc-body"><p class="bc-cat">Brand Strategy</p><h3 class="bc-title">What Makes a Brand Identity Actually Work</h3><button class="bc-link">Read Article <span class="arr">→</span></button></div></div>
+      <div class="bc" onclick="go('art-logo-mistakes')"><div class="bc-wrap"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt=""></div><div class="bc-body"><p class="bc-cat">Design Tips</p><h3 class="bc-title">Logo Design Mistakes That Hurt Your Brand</h3><button class="bc-link">Read Article <span class="arr">→</span></button></div></div>
+    </div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Article: Branding -->
+<div id="p-art-branding" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Brand Strategy</p>
+    <h1 class="art-title">What Makes a Brand Identity Actually Work</h1>
+    <div class="art-meta"><span>📅 January 2025</span><span>⏱ 5 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/5cde191a-d3b3-404b-b1eb-832386e2abd6/bottlemaockup.jpg" alt="">
+    <div class="art-body">
+      <p>Every week I see brands that look beautiful and do nothing. Polished logos, perfect color palettes, immaculate typography — and yet somehow they communicate absolutely nothing distinctive about who the business actually is. Looking good and working are two different things.</p>
+      <p>After years of building brand identities for clients across industries, I've identified the difference. It's not about execution quality. It's about whether the visual system is rooted in something real — a true understanding of who the brand is, who its customers are, and what feeling it needs to create.</p>
+      <div class="art-pull">The goal of brand identity is not to look beautiful. It's to make the right people feel the right thing before they read a single word.</div>
+      <h2>It Starts With Positioning, Not Aesthetics</h2>
+      <p>Most brand projects fail before they start because the brief jumps straight to "we want it to feel modern and fresh." That tells me nothing. Modern compared to what? Fresh in which market? The first thing I do with every client is slow everything down and ask the harder questions: Who are you really competing with? What do your best customers value about you that your competitors can't honestly claim? What would a client lose if you disappeared tomorrow?</p>
+      <h2>Distinctiveness Beats Taste</h2>
+      <p>The most effective brand identities aren't the most aesthetically refined ones. They're the most *distinctive* ones. Distinctiveness means something different from differentiation — it's not about being better, it's about being unmistakably yourself. A brand that looks like ten other brands in its category, but slightly better designed, is still invisible.</p>
+      <h2>Consistency Is the Multiplier</h2>
+      <p>A good logo deployed inconsistently is worse than a mediocre logo deployed consistently. Consistency compounds — every correct touchpoint reinforces the brand memory in the customer's mind. This is why brand guidelines aren't bureaucratic — they're strategic. They protect the investment.</p>
+      <h2>The Feeling Test</h2>
+      <p>I always end a brand project by asking one question: when someone encounters this brand for the first time, what do they feel? Not think. Feel. If the answer is vague or uncertain, the work isn't finished yet. Brand identity is ultimately emotional architecture. We're designing feelings, not just visuals.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Brand Strategy</span><span class="art-tag">Identity Design</span><span class="art-tag">Design Thinking</span></div>
+    <div class="art-author"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina"><div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles, originally from Poland. Specializing in brand identity, packaging, and editorial design.</div></div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Article: Travel -->
+<div id="p-art-travel" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Inspiration</p>
+    <h1 class="art-title">How Travel Shapes My Design Perspective</h1>
+    <div class="art-meta"><span>📅 December 2024</span><span>⏱ 4 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f66a2ad2-8343-412f-9351-ba9933a422d5/paris.jpg" alt="">
+    <div class="art-body">
+      <p>I grew up in Poland and moved to Los Angeles. Between those two cities I've lived and worked across Europe — and every place I've spent time in has permanently changed how I see. Not in a vague, inspirational-poster way. In a specific, technical, this-is-how-I-approach-composition-now way.</p>
+      <p>Warsaw taught me restraint. Polish graphic design has a long tradition of doing more with less — strong geometric forms, limited palettes, typography that carries the whole weight of communication. When you grow up surrounded by that, economy becomes instinct.</p>
+      <div class="art-pull">Los Angeles taught me permission. Permission to be warmer, bolder, more sensory. Permission to let design breathe and take up space.</div>
+      <h2>What Paris Taught Me About Visual Hierarchy</h2>
+      <p>When I spent time in Paris, I became obsessed with the city's layered visual culture — how posters overlap on walls, how different eras of typography coexist on a single street. Paris is an accidental masterclass in visual hierarchy and how time creates meaning in design.</p>
+      <h2>How I Apply This to Client Work</h2>
+      <p>Every city I visit gets archived — not just in photos but in observations. The way a bakery's awning color relates to its window typography. The proportion of signage to facade. The way a market stall communicates freshness through color choices. This archive feeds directly into client work. When I'm designing for a food brand or a hospitality client, I'm drawing on hundreds of real-world examples of how physical environments communicate.</p>
+      <h2>My Advice: Design Outside the Studio</h2>
+      <p>If you're a designer and you haven't been somewhere uncomfortable recently, go. Not to collect Pinterest references. To observe how real people navigate real visual environments. That's where the best design thinking happens — not at a desk, but on a street, in a market, in a city that doesn't look like the one you live in.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Inspiration</span><span class="art-tag">Travel</span><span class="art-tag">Design Process</span><span class="art-tag">Photography</span></div>
+    <div class="art-author"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina"><div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles, originally from Poland. Specializing in brand identity, packaging, and editorial design.</div></div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Article: Packaging -->
+<div id="p-art-packaging" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Packaging Design</p>
+    <h1 class="art-title">Designing Packaging That Sells on Sight</h1>
+    <div class="art-meta"><span>📅 November 2024</span><span>⏱ 7 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/34257f7d-2ee6-4cb9-95a8-3bd4f92c8fc5/bagmockup.jpg" alt="">
+    <div class="art-body">
+      <p>You have three seconds. That's approximately how long a product sits in a consumer's field of vision before they move on — in a store aisle, on a shelf, on a website. Packaging design is the highest-stakes visual communication challenge in all of graphic design, and it's also the most underestimated.</p>
+      <div class="art-pull">Packaging isn't decoration. It's the last salesperson between your product and a sale.</div>
+      <h2>The Three-Second Rule</h2>
+      <p>I design every package to communicate one thing in three seconds — the most important thing the consumer needs to feel to pick it up. Not think. Feel. The technical information, the ingredients, the brand story — all of that lives in what I call the "second read." But the first three seconds are purely emotional. Your packaging needs to win that battle.</p>
+      <h2>Color Does the Heaviest Lifting</h2>
+      <p>Before typography, before photography, before illustration — color is what registers first. The palette decision in packaging isn't aesthetic, it's strategic. What colors does your category own? Which colors are your competitors using? Where is the white space — both literally and conceptually — that you can occupy?</p>
+      <h2>Restraint Is a Superpower</h2>
+      <p>The most common packaging mistake I see is too much information fighting for attention. Every word, icon, and callout that gets added diminishes the impact of everything else. The brands with the most shelf impact are almost always the most restrained — they make one clear visual statement and commit to it entirely.</p>
+      <h2>It Has to Photograph Well</h2>
+      <p>Modern packaging lives as much on a phone screen as it does on a shelf. Design for the Instagram photo. Design for the unboxing video. The brands that do this well — whose packaging photographs so beautifully that customers post it without being asked — have unlocked a marketing channel that money can't fully replicate.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Packaging</span><span class="art-tag">Product Design</span><span class="art-tag">Brand Strategy</span></div>
+    <div class="art-author"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina"><div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles, originally from Poland. Specializing in brand identity, packaging, and editorial design.</div></div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Article: Discovery -->
+<div id="p-art-discovery" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Design Process</p>
+    <h1 class="art-title">Why I Ask So Many Questions Before I Design</h1>
+    <div class="art-meta"><span>📅 October 2024</span><span>⏱ 4 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/23a7ef55-e340-4665-b59b-2b6b4964a1db/Coffee-Cup-Hand.jpg" alt="">
+    <div class="art-body">
+      <p>The most common complaint clients have after a failed design project isn't "the designer wasn't talented." It's "the designer didn't understand us." Talent is everywhere. Understanding is rare. And understanding can't be faked — it has to be earned through the right questions asked in the right order.</p>
+      <div class="art-pull">I spend more time listening before a project than most designers spend designing during one. That's not inefficiency. That's the work.</div>
+      <h2>The Questions I Always Ask</h2>
+      <p>I start every project with a discovery session. Not a brief form. An actual conversation. I want to understand: Who are your best customers and why do they choose you? Who are your worst customers — the ones you wish would go to a competitor? What does success look like in 3 years? If your brand were a person, who would they be? What brands do you admire outside your category, and why?</p>
+      <h2>Why These Questions Matter</h2>
+      <p>The answers to these questions create constraints — and constraints are the most valuable thing in design. Without them, you're just making pretty things. With them, every decision has a reason, and every element of the visual system is doing a specific job. The logo isn't beautiful for its own sake. It's beautiful because it communicates the exact right thing to the exact right person.</p>
+      <h2>The Questions Clients Don't Expect</h2>
+      <p>The questions that generate the most useful answers are always the unexpected ones. "What are you afraid of with this rebrand?" reveals more than "what's your brand personality?" "Who in your team is going to push back on this?" tells me more about the real constraints than any brief document. Good questions create psychological safety and surface the real brief, not the sanitized one.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Design Process</span><span class="art-tag">Client Work</span><span class="art-tag">Brand Strategy</span></div>
+    <div class="art-author"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina"><div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles. Specializing in brand identity, packaging, and editorial design.</div></div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Article: Logo Mistakes -->
+<div id="p-art-logo-mistakes" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Design Tips</p>
+    <h1 class="art-title">Logo Design Mistakes That Hurt Your Brand</h1>
+    <div class="art-meta"><span>📅 September 2024</span><span>⏱ 5 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/153adea1-68b6-4608-9da2-21ad8c4d972a/phone.png" alt="">
+    <div class="art-body">
+      <p>I review a lot of existing logos as part of brand audits — and I see the same mistakes over and over. Not because business owners aren't smart, but because logo design is a discipline that looks simpler than it is. Here are the mistakes that cause the most damage, and what to do instead.</p>
+      <div class="art-pull">A logo isn't decoration. It's the first word your brand says. Make sure it's saying the right thing.</div>
+      <h2>Mistake 1: Choosing a Trendy Font</h2>
+      <p>Trendy fonts make logos feel current for approximately 18 months, then they make them feel dated for the next 15 years. I can tell the year a logo was made within two years just from the typeface choice. The fonts that are everywhere right now will be the first things you want to change in two years. Choose for longevity, not the moment.</p>
+      <h2>Mistake 2: Too Much Complexity</h2>
+      <p>A logo needs to work at the size of a favicon and the size of a building. The more elements you add, the fewer contexts it works in. The best logos are almost embarrassingly simple at first glance — and reveal their craft on closer inspection. Complexity is not sophistication.</p>
+      <h2>Mistake 3: Designing for the Presentation, Not Reality</h2>
+      <p>A logo on a white background in a PDF looks different from a logo on a storefront, on a van, on a black t-shirt, reversed out of a dark background. I design in context from day one. If a logo only works in ideal conditions, it doesn't work.</p>
+      <h2>Mistake 4: No Clear Visual Hierarchy</h2>
+      <p>If everything in a logo is equally prominent, nothing stands out. The brand name, tagline, icon, and any supporting text need a clear hierarchy — with one dominant element that carries the brand recognition, and everything else supporting it. When in doubt, simplify the hierarchy until one thing wins.</p>
+      <h2>What to Do Instead</h2>
+      <p>Start with a word. One word that captures the essential feeling your brand should create. Then build everything — typeface, form, color — from that word outward. Every decision should be defensible against that single word. If it is, you have a coherent logo. If it isn't, you have decoration.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Logo Design</span><span class="art-tag">Design Tips</span><span class="art-tag">Brand Identity</span></div>
+    <div class="art-author"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina"><div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles. Specializing in brand identity, packaging, and editorial design.</div></div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- Article: Studio Life -->
+<div id="p-art-studio" class="page">
+  <div class="article">
+    <a href="#" onclick="go('blog');return false" class="btn-back">← Back to Blog</a>
+    <p class="art-cat">Studio Life</p>
+    <h1 class="art-title">What a Day in My LA Design Studio Looks Like</h1>
+    <div class="art-meta"><span>📅 August 2024</span><span>⏱ 3 min read</span><span>✍️ Karolina Scavelli</span></div>
+    <img class="art-hero-img" src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="">
+    <div class="art-body">
+      <p>People often ask what running a solo design studio actually looks like day to day. The honest answer: it varies enormously. Some days are deep work days — four hours in Illustrator without looking up. Some days are discovery calls, client feedback sessions, and proposal writing. No two weeks are the same.</p>
+      <p>But there's a rhythm to it. And I've spent years protecting that rhythm, because I know that when the rhythm breaks, the work suffers.</p>
+      <div class="art-pull">I don't have a commute. I have a walk to my desk, a coffee ritual, and a playlist that tells my brain it's time to make things.</div>
+      <h2>Morning: No Screens Until 9am</h2>
+      <p>I moved to LA partly for the light. The mornings here are something the rest of the world doesn't have — this golden quality before 9am that makes everything look designed. I protect those mornings. I walk, I make coffee slowly, I look at things. That observational practice feeds directly into my work.</p>
+      <h2>10am–1pm: Deep Work</h2>
+      <p>This is when I design. Phone on silent, notifications off, the right playlist on (usually something instrumental — Nils Frahm or Bonobo). These three hours are sacred. Clients know not to expect responses during this window. My best work has always happened here.</p>
+      <h2>Afternoon: Communication and Business</h2>
+      <p>After lunch I handle the business side — emails, proposals, client check-ins, invoicing. Creative energy shifts in the afternoon anyway. I lean into the administrative work rather than fighting it. The key is knowing when you're at your best creatively and guarding that time obsessively.</p>
+      <h2>The LA Part</h2>
+      <p>Being in Los Angeles isn't just a lifestyle choice — it feeds the work. The design culture here is extraordinary. The fashion, the food, the architecture, the street culture. I'm constantly taking in visual information that ends up informing client projects months later. The city is my reference library and I never leave it.</p>
+    </div>
+    <div class="art-tags"><span class="art-tag">Studio Life</span><span class="art-tag">Los Angeles</span><span class="art-tag">Creative Process</span></div>
+    <div class="art-author"><img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/f9686f07-1c59-47ca-a239-2c83c4c120f7/me1.jpg" alt="Karolina"><div><div class="aa-name">Karolina Scavelli</div><div class="aa-bio">Graphic designer based in Los Angeles, originally from Poland. Specializing in brand identity, packaging, and editorial design.</div></div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<!-- ══════════════════════════════════
+  CONTACT
+══════════════════════════════════ -->
+<div id="p-contact" class="page">
+  <div class="contact-pg">
+    <div class="cp-l reveal">
+      <p class="cp-lbl">Get in touch</p>
+      <h1 class="cp-title">Let's build something worth noticing.</h1>
+      <p class="cp-sub">Whether you're launching a new brand, refreshing an identity, or need a designer who shows up with craft and conviction — I'd love to hear about your project.</p>
+      <div class="cp-rows">
+        <div class="cp-row"><span class="cp-rl">Email</span><a href="mailto:karodukla@gmail.com" class="cp-rv">karodukla@gmail.com</a></div>
+        <div class="cp-row"><span class="cp-rl">Based in</span><span class="cp-rv">Los Angeles, California</span></div>
+        <div class="cp-row"><span class="cp-rl">Availability</span><span class="cp-rv" style="color:#6BAA75">✦ Available for new projects</span></div>
+        <div class="cp-row"><span class="cp-rl">Response time</span><span class="cp-rv">Within 24 hours</span></div>
+        <div class="cp-row"><span class="cp-rl">Works with</span><span class="cp-rv">Clients worldwide</span></div>
+      </div>
+      <div class="cp-socs">
+        <a href="https://www.linkedin.com/in/karolina-sca/" target="_blank" class="cp-soc">LinkedIn</a>
+        <a href="mailto:karodukla@gmail.com" class="cp-soc">Send Email</a>
+      </div>
+    </div>
+    <div class="cp-r reveal">
+      <h2 class="cp-ft">Start a Project</h2>
+      <p class="cp-fs">Fill in a few details and I'll get back to you within 24 hours. The more you share, the better I can help.</p>
+      <div class="fr"><div><label>First Name</label><input type="text" placeholder="Your first name"></div><div><label>Last Name</label><input type="text" placeholder="Your last name"></div></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="hello@yourbrand.com"></div>
+      <div class="fg"><label>Company / Brand Name</label><input type="text" placeholder="Your Brand Co."></div>
+      <div class="fg"><label>What do you need?</label><div class="svc-checks"><span class="sch" onclick="this.classList.toggle('on')">Brand Identity</span><span class="sch" onclick="this.classList.toggle('on')">Logo Design</span><span class="sch" onclick="this.classList.toggle('on')">Packaging</span><span class="sch" onclick="this.classList.toggle('on')">Print / Editorial</span><span class="sch" onclick="this.classList.toggle('on')">Digital / UI</span><span class="sch" onclick="this.classList.toggle('on')">Other</span></div></div>
+      <div class="fg"><label>Tell me about your project</label><textarea placeholder="What are you working on? What's your timeline? What does success look like?"></textarea></div>
+      <button class="f-submit" onclick="submitForm(this)">Send Message →</button>
+      <p class="f-note">I read every message personally and respond within 24 hours. No automated replies — just a real conversation.</p>
+    </div>
+  </div>
+  <div class="ci-strip">
+    <div class="ci"><div class="ci-l">Studio Location</div><div class="ci-v">Los Angeles, CA</div><div class="ci-s">Working remotely with clients across the US, Europe, and beyond</div></div>
+    <div class="ci"><div class="ci-l">Project Timeline</div><div class="ci-v">2 – 8 Weeks</div><div class="ci-s">Depending on scope — branding, packaging, and editorial all vary</div></div>
+    <div class="ci"><div class="ci-l">Project Timeline</div><div class="ci-v">2 – 8 Weeks</div><div class="ci-s">Depending on scope — branding, packaging, and editorial all vary</div></div>
+  </div>
+  <footer><span>© 2025 Karolina Scavelli — Scavelli Design</span><div class="f-links"><a href="#" onclick="go('home');return false">Home</a><a href="#" onclick="go('portfolio');return false">Work</a><a href="#" onclick="go('blog');return false">Blog</a><a href="#" onclick="go('contact');return false">Contact</a></div><span>Graphic Designer · Los Angeles</span></footer>
+</div>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function loop(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.addEventListener('mouseover',e=>{
+  if(e.target.closest('a,button,.wi,.pi,.pfi,.bc,.tp,.sch,.fbtn,.svc-check,.sk,.pn-name,.bf-title')){
+    cur.style.transform='translate(-50%,-50%) scale(2.5)';curR.style.opacity='0';
+  } else {
+    cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.opacity='.45';
+  }
+});
+
+/* NAVIGATION */
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById('p-'+page);
+  if(el){el.classList.add('active');}
+  document.querySelectorAll('.nav-links a[data-p]').forEach(a=>{
+    const base=page.split('-')[0];
+    a.classList.toggle('active',a.dataset.p===base||a.dataset.p===page);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(initReveal,80);
+}
+
+/* REVEAL */
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:0.04,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.page.active .reveal:not(.in)').forEach(el=>obs.observe(el));
+  setTimeout(()=>document.querySelectorAll('.page.active .reveal:not(.in)').forEach(el=>el.classList.add('in')),600);
+}
+initReveal();
+
+/* PORTFOLIO FILTER */
+function filt(cat,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.pi').forEach(item=>{
+    item.style.display=(cat==='all'||item.dataset.cat===cat)?'block':'none';
+  });
+}
+
+/* FORM SUBMIT */
+function submitForm(btn){
+  btn.textContent='Message Sent! ✦';
+  btn.style.background='#5A8A5A';
+  setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';},3000);
+}
+</script>
+</body>
+</html>

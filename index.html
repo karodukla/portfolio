@@ -1018,22 +1018,12 @@ footer span{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:#
     </div>
   </section>
 
-  <!-- Rise Shine Explore — shown when Website Design filter is active -->
-  <div id="rise-shine-card" style="display:none;padding:52px;cursor:pointer" onclick="window.open('https://karodukla.github.io/rise-shine-explore/index.html','_blank')">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-      <div style="overflow:hidden;border-radius:4px">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&h=600&q=80" alt="Rise Shine Explore" style="width:100%;display:block;transition:transform .5s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      </div>
-      <div>
-        <p style="font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:14px">Website Design · Full Site</p>
-        <h2 style="font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;line-height:1.1;margin-bottom:20px">Rise Shine Explore</h2>
-        <p style="font-family:var(--mono);font-size:.78rem;line-height:1.9;color:#5A5550;margin-bottom:32px">Full website for a Polish yoga &amp; nature retreat company based in the USA. Designed to feel warm, grounded, and intentional — a digital home for a community built on connection.</p>
-        <span style="display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:14px 28px;background:var(--black);color:var(--cream)">View Live Site →</span>
-      </div>
-    </div>
-  </div>
-
   <div class="port-grid">
+    <!-- Westside Commerce Center, Website Design -->
+    <div class="pi" data-cat="website" onclick="window.open('westside-commerce-center.html','_blank')">
+      <img src="https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=900&q=80" alt="Westside Commerce Center">
+      <div class="pi-ov"><div class="pi-info"><p class="pi-cat">Website Design</p><p class="pi-name">Westside Commerce Center</p><p class="pi-desc">Commercial real estate landing page for a ±130,000 SF industrial sublease in Los Angeles.</p><button class="pi-btn">View Live Site →</button></div></div>
+    </div>
     <!-- Branding Design 1, Candle Tin -->
     <div class="pi" data-cat="branding" onclick="go('proj-candle')">
       <img src="https://images.squarespace-cdn.com/content/v1/65ea124518b28f152fdbb273/1709853174114-H9T69P2R4B5F14YCTXYX/Wax-Candle-Tin-Mockup.jpg" alt="Candle Brand">
@@ -2109,16 +2099,16 @@ function filt(cat,btn){
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   var grid=document.querySelector('.port-grid');
-  var rsCard=document.getElementById('rise-shine-card');
   var digSec=document.querySelector('.dig-sec');
   var featSec=document.querySelector('.port-feat');
   if(cat==='website'){
-    if(grid) grid.style.display='none';
-    if(rsCard) rsCard.style.display='block';
+    if(grid) grid.style.display='';
+    document.querySelectorAll('.pi').forEach(function(item){
+      item.style.display=(item.getAttribute('data-cat')==='website')?'':'none';
+    });
     if(digSec) digSec.style.display='none';
     if(featSec) featSec.style.display='none';
   } else {
-    if(rsCard) rsCard.style.display='none';
     if(grid) grid.style.display='';
     document.querySelectorAll('.pi').forEach(function(item){
       item.style.display=(cat==='all'||item.getAttribute('data-cat')===cat)?'':'none';
@@ -2795,16 +2785,16 @@ function filt(cat,btn){
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   var grid=document.querySelector('.port-grid');
-  var rsCard=document.getElementById('rise-shine-card');
   var digSec=document.querySelector('.dig-sec');
   var featSec=document.querySelector('.port-feat');
   if(cat==='website'){
-    if(grid) grid.style.display='none';
-    if(rsCard) rsCard.style.display='block';
+    if(grid) grid.style.display='';
+    document.querySelectorAll('.pi').forEach(function(item){
+      item.style.display=(item.getAttribute('data-cat')==='website')?'':'none';
+    });
     if(digSec) digSec.style.display='none';
     if(featSec) featSec.style.display='none';
   } else {
-    if(rsCard) rsCard.style.display='none';
     if(grid) grid.style.display='';
     document.querySelectorAll('.pi').forEach(function(item){
       item.style.display=(cat==='all'||item.getAttribute('data-cat')===cat)?'':'none';

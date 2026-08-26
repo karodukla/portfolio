@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kulfi · Zari Eyes — Wear the thread. Own the shimmer.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" />
+<style>
+  :root{
+    --wine: #3a1019;
+    --wine-deep: #2a0a12;
+    --plum: #4a1827;
+    --midnight: #14162e;
+    --midnight-deep: #0c0e22;
+    --gold: #c9a061;
+    --gold-soft: #d8b97a;
+    --gold-deep: #8a6a35;
+    --copper: #c4794f;
+    --cream: #f4ead8;
+    --cream-soft: #ebe0cc;
+    --ink: #1a0e10;
+    --serif: "Bodoni Moda", "Times New Roman", serif;
+    --sans: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+
+  body{
+    background:#1a0810;
+    background-image:
+      radial-gradient(900px 600px at 20% 8%, rgba(201,160,97,.10), transparent 60%),
+      radial-gradient(700px 500px at 90% 70%, rgba(74,24,39,.55), transparent 65%),
+      linear-gradient(180deg, #1a0810 0%, #0e0610 100%);
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    padding: 32px 16px 64px;
+    min-height: 100vh;
+  }
+
+  /* Faux email-client chrome above message */
+  .mail-meta{
+    max-width: 640px;
+    margin: 0 auto 14px;
+    color: rgba(244,234,216,.55);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    display:flex;
+    justify-content: space-between;
+    align-items:baseline;
+    padding: 0 4px;
+  }
+  .mail-meta .from{color: rgba(244,234,216,.85)}
+  .mail-meta .subject{color: rgba(244,234,216,.95); font-style: italic; text-transform:none; letter-spacing:0; font-family: var(--serif); font-size: 13px}
+
+  .email{
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--cream);
+    color: var(--ink);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45), 0 2px 0 rgba(255,255,255,.04) inset;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  /* ───── Preheader strip ───── */
+  .preheader{
+    background: var(--midnight);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 11px 24px;
+    border-bottom: 1px solid rgba(201,160,97,.25);
+  }
+  .preheader .gold{color: var(--gold-soft)}
+  .preheader .dot{display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--gold);margin:0 12px;vertical-align: 3px}
+
+  /* ───── Top nav ───── */
+  .topnav{
+    background: var(--cream);
+    padding: 22px 32px 18px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(58,16,25,.10);
+  }
+  .logo{
+    display:block;
+    line-height: 0;
+  }
+  .logo img{
+    display:block;
+    height: 34px;
+    width: auto;
+  }
+  .logo span.dot{color: var(--gold)}
+  .topnav nav{
+    display:flex;
+    gap: 22px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--wine);
+  }
+  .topnav nav a{color: inherit; text-decoration: none}
+  .topnav nav a:hover{color: var(--gold-deep)}
+
+  /* ───── Hero ───── */
+  .hero{
+    position: relative;
+    background: #2a0a12;
+  }
+  .hero img.hero-img{
+    display:block; width: 100%; height: auto;
+  }
+  .hero .eyebrow{
+    position: absolute;
+    top: 26px; left: 0; right: 0;
+    text-align:center;
+    color: var(--gold-soft);
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+  }
+  .hero .eyebrow:before, .hero .eyebrow:after{
+    content:""; display:inline-block; width: 36px; height:1px;
+    background: var(--gold-soft); opacity:.6;
+    vertical-align: middle; margin: 0 14px;
+  }
+  .hero-footer{
+    background: #2a0a12;
+    color: var(--cream-soft);
+    padding: 20px 32px 28px;
+    text-align: center;
+    border-top: 1px solid rgba(201,160,97,.18);
+  }
+  .hero-footer .label{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 8px;
+  }
+  .hero-footer .product{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--cream);
+  }
+  .hero-footer .product b{font-style: normal; font-weight:600; color: var(--gold-soft)}
+
+  /* ───── Brand intro (love letter) ───── */
+  .intro{
+    background: var(--cream);
+    padding: 56px 56px 48px;
+    text-align: center;
+    position: relative;
+  }
+  .ornament{
+    display:block;
+    margin: 0 auto 22px;
+    color: var(--gold-deep);
+    opacity:.85;
+  }
+  .intro .kicker{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 18px;
+  }
+  .intro h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.25;
+    color: var(--wine);
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .intro h2 em{font-style: normal; color: var(--ink)}
+  .intro p{
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(26,14,16,.78);
+    margin: 0 auto;
+    max-width: 460px;
+    text-wrap: pretty;
+  }
+  .intro .sig{
+    margin-top: 22px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--wine);
+  }
+
+  /* ───── Section divider ───── */
+  .rule{
+    display:flex; align-items:center; justify-content:center;
+    gap: 12px;
+    color: var(--gold-deep);
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    padding: 0 56px;
+  }
+  .rule:before, .rule:after{
+    content:""; flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--gold-deep), transparent); opacity:.5;
+  }
+  .rule .diamond{ width:5px; height:5px; background: var(--gold); transform: rotate(45deg); display:inline-block}
+
+  /* ───── Editorial split ───── */
+  .editorial{
+    background: var(--cream);
+    padding: 48px 0 0;
+  }
+  .editorial .head{
+    text-align:center;
+    padding: 0 56px 36px;
+  }
+  .editorial .label{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 14px;
+  }
+  .editorial h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.05;
+    color: var(--wine);
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  .editorial h3 i{font-style: italic; color: var(--copper)}
+  .editorial .sub{
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(26,14,16,.72);
+    margin: 16px auto 0;
+    max-width: 440px;
+  }
+  .editorial .feature-img{
+    display:block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ───── Product spotlight (dark) ───── */
+  .spotlight{
+    background: var(--midnight);
+    background-image:
+      radial-gradient(600px 400px at 80% 10%, rgba(201,160,97,.12), transparent 60%),
+      radial-gradient(500px 360px at 10% 90%, rgba(74,24,39,.45), transparent 65%);
+    color: var(--cream);
+    padding: 56px 48px 56px;
+    position: relative;
+  }
+  .spotlight .head{
+    text-align:center;
+    margin-bottom: 36px;
+  }
+  .spotlight .label{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 14px;
+  }
+  .spotlight h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--cream);
+    letter-spacing: -.005em;
+  }
+  .spotlight h3 b{font-weight: 600; font-style: normal; color: var(--gold-soft)}
+  .spotlight .product-img{
+    display:block; width: 100%; height: auto; border-radius: 2px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+  .price-row{
+    display:flex; justify-content: space-between; align-items: baseline;
+    border-top: 1px solid rgba(201,160,97,.25);
+    border-bottom: 1px solid rgba(201,160,97,.25);
+    padding: 16px 0;
+    margin: 28px 0 32px;
+  }
+  .price-row .name{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--cream);
+  }
+  .price-row .meta{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+  }
+  .price-row .price{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--gold-soft);
+  }
+
+  .benefits{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,160,97,.22);
+    border: 1px solid rgba(201,160,97,.22);
+  }
+  .benefit{
+    background: var(--midnight);
+    padding: 22px 20px 24px;
+  }
+  .benefit .num{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold-soft);
+    font-size: 14px;
+    margin-bottom: 10px;
+    letter-spacing: .04em;
+  }
+  .benefit .title{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .benefit .desc{
+    font-family: var(--sans);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: rgba(244,234,216,.7);
+  }
+
+  /* ───── Close-up beauty band ───── */
+  .beauty{
+    position: relative;
+    background: #f4ead8;
+  }
+  .beauty img{display:block; width: 100%; height:auto}
+  .beauty-caption{
+    position:absolute; left: 0; right: 0; bottom: 0;
+    padding: 28px 32px;
+    color: var(--cream);
+    background: linear-gradient(180deg, transparent 0%, rgba(20,16,18,.6) 70%);
+    display:flex; align-items:flex-end; justify-content: space-between;
+    gap: 24px;
+  }
+  .beauty-caption .quote{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--cream);
+    max-width: 340px;
+    text-wrap: balance;
+  }
+  .beauty-caption .credit{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ───── How to use ───── */
+  .howto{
+    background: var(--cream);
+    padding: 56px 56px 48px;
+  }
+  .howto .head{
+    text-align:center;
+    margin-bottom: 36px;
+  }
+  .howto .label{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 14px;
+  }
+  .howto h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--wine);
+    margin: 0;
+  }
+  .howto h3 em{font-style: normal; color: var(--ink)}
+  .steps{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .steps-img{
+    width: 100%; height: 100%;
+    background: #4a1827 center/cover no-repeat;
+    border-radius: 2px;
+    min-height: 280px;
+  }
+  .steps-list{
+    display:flex; flex-direction: column; justify-content: center;
+    gap: 28px;
+  }
+  .step{
+    display:flex; gap: 18px; align-items: flex-start;
+  }
+  .step .n{
+    width: 42px; height: 42px; flex-shrink:0;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .step h4{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--wine);
+    margin: 4px 0 6px;
+    line-height: 1.2;
+  }
+  .step p{
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: rgba(26,14,16,.74);
+    margin: 0;
+  }
+
+  /* ───── CTA ───── */
+  .cta{
+    background: var(--wine);
+    background-image: radial-gradient(700px 400px at 50% 0%, rgba(201,160,97,.18), transparent 60%);
+    text-align:center;
+    padding: 56px 48px 60px;
+    color: var(--cream);
+    position: relative;
+  }
+  .cta .tag{
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 16px;
+  }
+  .cta h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 38px;
+    line-height: 1.1;
+    color: var(--cream);
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .cta h3 em{font-style: normal; color: var(--gold-soft); font-weight: 600}
+  .cta p{
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: rgba(244,234,216,.78);
+    margin: 0 auto 28px;
+    max-width: 420px;
+  }
+  .btn{
+    display:inline-block;
+    background: var(--gold);
+    color: var(--wine-deep);
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 36px;
+    border-radius: 999px;
+    transition: transform .15s ease, background .15s ease;
+    box-shadow: 0 12px 30px rgba(201,160,97,.25);
+  }
+  .btn:hover{background: var(--gold-soft); transform: translateY(-1px)}
+  .btn .arrow{margin-left: 10px; font-family: var(--serif)}
+  .cta .price-line{
+    margin-top: 18px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold-soft);
+  }
+  .cta .price-line b{color: var(--cream); font-weight: 600; font-style:normal}
+
+  /* ───── Footer ───── */
+  .footer{
+    background: var(--midnight-deep);
+    color: var(--cream-soft);
+    padding: 48px 48px 36px;
+    text-align:center;
+  }
+  .footer .brand{
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 10px;
+  }
+  .footer .brand img{
+    height: 38px;
+    width: auto;
+    display:block;
+  }
+  .footer .tagline{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold-soft);
+    margin-bottom: 28px;
+  }
+  .footer .links{
+    display:flex; justify-content: center; flex-wrap: wrap; gap: 24px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--cream-soft);
+    margin-bottom: 28px;
+  }
+  .footer .links a{color: inherit; text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent}
+  .footer .links a:hover{border-color: var(--gold-soft); color: var(--gold-soft)}
+  .footer .socials{
+    display:flex; justify-content: center; gap: 14px;
+    margin-bottom: 32px;
+  }
+  .footer .socials a{
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,160,97,.35);
+    color: var(--gold-soft);
+    display:inline-flex; align-items:center; justify-content:center;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+  }
+  .footer .socials a:hover{background: rgba(201,160,97,.12); border-color: var(--gold-soft)}
+  .footer .socials svg{width: 14px; height:14px; fill: currentColor}
+  .footer .legal{
+    font-family: var(--sans);
+    font-size: 10px;
+    line-height: 1.7;
+    color: rgba(244,234,216,.45);
+    letter-spacing: .04em;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .footer .legal a{color: rgba(244,234,216,.7); text-decoration: underline}
+  .footer .divider{
+    height:1px; background: linear-gradient(90deg, transparent, rgba(201,160,97,.4), transparent);
+    margin: 0 0 28px;
+  }
+
+  /* ───── responsive nudges ───── */
+  @media (max-width: 560px){
+    .topnav{padding: 18px 22px}
+    .topnav nav{gap: 14px; font-size: 10px; letter-spacing: .18em}
+    .intro, .howto, .spotlight, .cta, .footer{padding-left: 26px; padding-right: 26px}
+    .editorial .head{padding-left: 26px; padding-right: 26px}
+    .editorial h3{font-size: 34px}
+    .intro h2{font-size: 24px}
+    .cta h3{font-size: 30px}
+    .spotlight h3{font-size: 28px}
+    .benefits{grid-template-columns: 1fr}
+    .steps{grid-template-columns: 1fr}
+    .beauty-caption{padding: 22px}
+    .beauty-caption .quote{font-size: 18px}
+  }
+</style>
+</head>
+<body>
+
+  <!-- email-client meta strip -->
+  <div class="mail-meta">
+    <span class="from">Kulfi Beauty · hello@kulfibeauty.com</span>
+  </div>
+  <div class="mail-meta" style="margin-bottom: 22px">
+    <span class="subject">A love letter, woven in gold.</span>
+    <span>Preview · Wear the thread. Own the shimmer ✦</span>
+  </div>
+
+  <div class="email">
+
+    <!-- preheader -->
+    <div class="preheader">
+      <span class="gold">Free shipping over $40</span>
+      <span class="dot"></span>
+      Diwali edit
+      <span class="dot"></span>
+      <span>Vegan · Cruelty-free</span>
+    </div>
+
+    <!-- nav -->
+    <div class="topnav">
+      <a class="logo" href="#" aria-label="Kulfi Beauty"><img src="https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-model_d7415792.jpg" style="display:none" alt="Kulfi" /></a>
+      <nav>
+        <a href="#">Shop</a>
+        <a href="#">New</a>
+        <a href="#">About</a>
+        <a href="#">Account</a>
+      </nav>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">Introducing&nbsp;·&nbsp;Zari Eyes</div>
+      <img class="hero-img" src="https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-wear-thread_afe14e08.jpg" alt="Zari Eyes chrome eyeshadow — wear the thread, own the shimmer." />
+    </section>
+    <div class="hero-footer">
+      <div class="label">Cream-to-powder chrome · New from Kulfi</div>
+      <div class="product"><b>Zari Eyes</b> — a shimmer spun from gold and silver thread.</div>
+    </div>
+
+    <!-- INTRO -->
+    <section class="intro">
+      <svg class="ornament" width="44" height="22" viewBox="0 0 44 22" fill="none" aria-hidden="true">
+        <path d="M2 11 H18" stroke="currentColor" stroke-width="1"/>
+        <path d="M26 11 H42" stroke="currentColor" stroke-width="1"/>
+        <path d="M22 2 L26 11 L22 20 L18 11 Z" fill="currentColor"/>
+        <circle cx="22" cy="11" r="1.6" fill="#f4ead8"/>
+      </svg>
+      <div class="kicker">A note from Kulfi</div>
+      <h2>A <em>love letter</em> to the little girl who dimmed her light to be palatable.</h2>
+      <p>Kulfi was born from a longing — for makeup that didn't ask us to be smaller, lighter, or somebody else. Zari Eyes is our newest chapter: a finish spun from gold and silver thread, the kind that catches lamplight at a wedding, a Diwali table, a Tuesday.</p>
+      <div class="sig">— with love, the Kulfi team</div>
+    </section>
+
+    <div class="rule" style="padding-bottom: 36px"><span class="diamond"></span></div>
+
+    <!-- EDITORIAL -->
+    <section class="editorial">
+      <div class="head">
+        <div class="label">The story</div>
+        <h3>Threaded in <i>gold</i>,<br/>worn on the lid.</h3>
+        <p class="sub">Zari is the metallic thread woven into lehengas, dupattas, sherwanis — heirloom shimmer passed hand to hand. We bottled the same glow.</p>
+      </div>
+      <img class="feature-img" src="https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-diwali_a1ce2f2f.jpg" alt="Two friends in pink and yellow saris applying Kulfi makeup at a vanity surrounded by marigolds and fairy lights." />
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <section class="spotlight">
+      <div class="head">
+        <div class="label">The product</div>
+        <h3>Five chromes,<br/>one heirloom finish.</h3>
+      </div>
+
+      <img class="product-img" src="https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-zari-pots_7ffcacc9.jpg" alt="The Zari Eyes shade range — rose, copper, antique gold, midnight, and indigo cream eyeshadows on navy velvet." />
+
+      <div class="price-row">
+        <div>
+          <div class="meta">Zari Eyes</div>
+          <div class="name">Chrome Cream-to-Powder Shadow</div>
+        </div>
+        <div class="price">$30</div>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="num">i.</div>
+          <div class="title">A true chrome finish</div>
+          <div class="desc">Pigment so reflective it picks up candlelight. Not glitter — woven shimmer.</div>
+        </div>
+        <div class="benefit">
+          <div class="num">ii.</div>
+          <div class="title">Cream-to-powder formula</div>
+          <div class="desc">Goes on as a buttery cream, sets to a weightless powder. The best of both.</div>
+        </div>
+        <div class="benefit">
+          <div class="num">iii.</div>
+          <div class="title">No flake, no crease</div>
+          <div class="desc">Stays put through dinner, dancing, and the morning-after photos.</div>
+        </div>
+        <div class="benefit">
+          <div class="num">iv.</div>
+          <div class="title">Made for your fingertip</div>
+          <div class="desc">Dip in, press on, blend with warmth. No brush, no fuss — the old way.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAUTY SHOT -->
+    <section class="beauty">
+      <img src="https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-model_d7415792.jpg" alt="Close-up of a model wearing Zari Eyes chrome shadow on her lids — warm copper shimmer catching the light." />
+      <div class="beauty-caption">
+        <div class="quote">"Lamplight on a lid — the way grandmother's bangles caught the sun."</div>
+        <div class="credit">As worn in<br/>shade <em>no. 03 · Sona</em></div>
+      </div>
+    </section>
+
+    <!-- HOW TO USE -->
+    <section class="howto">
+      <div class="head">
+        <div class="label">How to wear it</div>
+        <h3>Two steps. <em>That's it.</em></h3>
+      </div>
+      <div class="steps">
+        <div class="steps-img" style="background-image: url('https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-finger-dip_1c407047.jpg')"></div>
+        <div class="steps-list">
+          <div class="step">
+            <div class="n">i</div>
+            <div>
+              <h4>Dip a fingertip.</h4>
+              <p>Press the warm pad of your finger into the cream — it'll lift away in one soft swipe. No brush needed; your skin warms the formula and unlocks the chrome.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">ii</div>
+            <div>
+              <h4>Press across the lid.</h4>
+              <p>Pat from the inner corner outward. Layer once for a glaze, twice for full metallic, three times for the wedding-guest moment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="tag">Now in stock</div>
+      <h3>Wear the thread.<br/><em>Own the shimmer.</em></h3>
+      <p>Five festive chromes. One fingertip. Endless ways to catch the light.</p>
+      <a class="btn" href="https://kulfibeauty.com/products/zari-eyes-eyeshadow">Shop Zari Eyes<span class="arrow">→</span></a>
+      <div class="price-line"><b>$30</b> · vegan · cruelty-free · ships free over $40</div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="brand"><img src="https://bomi-case-lzncup6a.manus.space/manus-storage/kulfi-model_d7415792.jpg" style="display:none" alt="Kulfi" /></div>
+      <div class="tagline">Beauty that brings you home.</div>
+
+      <div class="divider"></div>
+
+      <div class="links">
+        <a href="#">Shop all</a>
+        <a href="#">Our story</a>
+        <a href="#">Ingredients</a>
+        <a href="#">Stockists</a>
+        <a href="#">Help</a>
+      </div>
+
+      <div class="socials">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 2c-3.2 0-3.5 0-4.7.1-1.1.1-1.6.2-2 .4-.5.2-.8.4-1.1.7-.3.3-.6.6-.7 1.1-.2.4-.3.9-.4 2-.1 1.2-.1 1.5-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.6.4 2 .2.5.4.8.7 1.1.3.3.6.6 1.1.7.4.2.9.3 2 .4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.6-.2 2-.4.5-.2.8-.4 1.1-.7.3-.3.6-.6.7-1.1.2-.4.3-.9.4-2 .1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.6-.4-2-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.6-1.1-.7-.4-.2-.9-.3-2-.4-1.2-.1-1.5-.1-4.7-.1zm0 3.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 7.3a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8zm5.6-7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M16.5 3v2.4a4.9 4.9 0 0 0 3.5 1.5v2.5a7.2 7.2 0 0 1-3.5-.9v6.6a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1V12a3.1 3.1 0 1 0 2.2 2.9V3h2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9.2-.8 1.3-5 1.3-5s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-5 0-2.6-1.9-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.7 0 .9.3 1.9.8 2.5l.1.2-.3 1c-.1.2-.2.3-.4.2-1.4-.6-2.2-2.7-2.2-4.3 0-3.5 2.5-6.7 7.3-6.7 3.8 0 6.8 2.7 6.8 6.4 0 3.8-2.4 6.9-5.8 6.9-1.1 0-2.2-.6-2.6-1.3 0 0-.6 2.2-.7 2.7-.3 1-1 2.3-1.5 3.1A10 10 0 1 0 12 2z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C16.1 5 12 5 12 5s-4.1 0-7.1.3c-.4.1-1.3.1-2.1.9-.6.6-.8 2-.8 2S2 9.8 2 11.5v1c0 1.7.2 3.3.2 3.3s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7 .3 7 .3s4.1 0 7.1-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1c-.1-1.7-.3-3.3-.3-3.3zM10 14.7V8.9l5.3 2.9-5.3 2.9z"/></svg>
+        </a>
+      </div>
+
+      <p class="legal">
+        You're receiving this because you're on the Kulfi family list. Sent with love from Kulfi Beauty, 1024 Sunset Blvd, Los Angeles, CA 90026.<br/>
+        <a href="#">Manage preferences</a> · <a href="#">Unsubscribe</a> · <a href="#">View in browser</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

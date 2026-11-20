@@ -1,0 +1,108 @@
+/* Private preview: preserve the existing site outside the Work view. */
+#p-portfolio {
+  --work-paper:#faf8f4;
+  --work-card:#fffdfa;
+  --work-mat:#efede8;
+  --work-line:#ded9d0;
+  --work-ink:#242321;
+  --work-muted:#655e57;
+  --work-accent:#974d38;
+  background:var(--work-paper);
+  color:var(--work-ink);
+}
+body:has(#p-portfolio.active)>nav {background:rgba(250,248,244,.98);border-bottom:1px solid #ded9d0;}
+body:has(#p-portfolio.active)>nav a.active {color:#974d38;border-color:#974d38;}
+#p-portfolio .port-hero{background:var(--work-paper);border-bottom:0;padding-bottom:30px;}
+#p-portfolio .port-filter{gap:8px;}
+#p-portfolio .fbtn{color:var(--work-ink);border-color:var(--work-line);border-radius:2px;}
+#p-portfolio .fbtn:hover,#p-portfolio .fbtn:focus-visible{border-color:var(--work-accent);}
+#p-portfolio .fbtn.on{background:var(--work-ink);color:var(--work-card);border-color:var(--work-ink);}
+#p-portfolio .port-grid{
+  background:var(--work-paper);
+  padding:0 52px 48px;
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:20px;
+}
+#p-portfolio .port-grid > .pi{
+  grid-column:span 2;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  aspect-ratio:auto;
+  background:var(--work-card);
+  border:1px solid var(--work-line);
+  border-radius:3px;
+  text-decoration:none;
+  transition:border-color .18s ease;
+}
+#p-portfolio .port-grid > .pi[data-wide="true"]{grid-column:span 3;}
+#p-portfolio .port-grid > .pi[data-sole="true"]{grid-column:1/-1;}
+#p-portfolio .port-grid > .pi:hover,#p-portfolio .port-grid > .pi:focus-within{border-color:var(--work-accent);}
+#p-portfolio .port-grid > .pi > img{
+  width:100%;
+  height:clamp(196px,25vw,350px);
+  box-sizing:border-box;
+  padding:clamp(8px,1.3vw,18px);
+  object-fit:contain;
+  background:var(--work-mat);
+  display:block;
+  transform:none;
+  border-bottom:1px solid var(--work-line);
+}
+#p-portfolio .port-grid .pi-ov{display:block;position:static;padding:16px 19px 19px;background:none;}
+#p-portfolio .port-grid .pi:hover .pi-ov{background:none;}
+#p-portfolio .port-grid .pi-info{color:var(--work-ink);transform:none;opacity:1;}
+#p-portfolio .port-grid .pi-cat{color:var(--work-accent);font-size:.67rem;letter-spacing:.12em;margin-bottom:5px;}
+#p-portfolio .port-grid .pi-name{color:var(--work-ink);font-size:1.58rem;margin-bottom:4px;}
+#p-portfolio .port-grid .pi-desc{color:var(--work-muted);font: .81rem/1.5 system-ui,sans-serif;letter-spacing:0;}
+#p-portfolio .port-grid .pi-btn{color:var(--work-accent);border-color:var(--work-accent);font-size:.66rem;}
+#p-portfolio .port-grid .pi-btn:focus-visible{outline:2px solid var(--work-accent);outline-offset:3px;}
+#p-portfolio .dig-sec,#p-portfolio .port-feat{background:var(--work-paper);color:var(--work-ink);border-top:1px solid var(--work-line);}
+#p-portfolio .dig-sec .dcard{background:var(--work-card);border-color:var(--work-line);}
+#p-portfolio .port-feat .sec-l,#p-portfolio .port-feat .pfi-l{color:var(--work-accent);}
+#p-portfolio .port-feat .sec-h{color:var(--work-ink)!important;}
+#p-portfolio .pf-grid{background:transparent;gap:20px;}
+#p-portfolio .pfi{border-radius:3px;}
+#p-portfolio .cta-band{background:var(--work-paper);color:var(--work-ink);border-top:1px solid var(--work-line);}
+#p-portfolio .cta-band :is(.cta-title,.cta-title em,.cta-title i,.cta-sub,.cta-desc,.cta-email,.cta-tag){color:var(--work-ink);}
+#p-portfolio .cta-band a{color:var(--work-accent);}
+#p-portfolio .cta-band .btn-white{background:var(--work-ink);color:var(--work-card);}
+@media(max-width:768px){
+ #p-portfolio .port-hero{padding-bottom:22px;}
+ #p-portfolio .port-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 20px 32px;}
+ #p-portfolio .port-grid > .pi,#p-portfolio .port-grid > .pi[data-wide="true"]{grid-column:span 1;}
+ #p-portfolio .port-grid > .pi[data-mobile-wide="true"]{grid-column:1/-1;}
+ #p-portfolio .port-grid .pi-ov{padding:13px 14px 16px;}
+ #p-portfolio .port-grid .pi-name{font-size:1.28rem;}
+}
+@media(max-width:470px){
+ #p-portfolio .port-grid{grid-template-columns:1fr;}
+ #p-portfolio .port-grid > .pi > img{height:clamp(218px,65vw,300px);}
+}
+/* Existing one-off inline media mats must not override the shared mat. */
+#p-portfolio .port-grid > .pi > img {
+ object-fit:contain !important; background:var(--work-mat) !important;
+}
+#p-portfolio :is(.port-grid .pi,.cta-band a,.fbtn):focus-visible {
+ outline:2px solid var(--work-accent); outline-offset:3px;
+}
+#p-portfolio :is(.port-hero,.port-feat,.dig-sec) :is(.s-label,.s-title em,.s-title i),
+#p-portfolio .cta-band .cta-label {color:var(--work-accent);}
+#p-portfolio .port-feat .s-title {color:var(--work-ink)!important;}
+#p-portfolio .cta-band a.btn-solid {
+ background:var(--work-ink)!important;
+ color:var(--work-card)!important;
+ border:1px solid var(--work-ink);
+}
+/* Two original design samples are embedded HTML mockups rather than image files. */
+#p-portfolio .port-grid > .pi > div:first-child:not(.pi-ov) {
+ position:relative !important; inset:auto !important; flex:0 0 auto;
+ height:clamp(196px,25vw,350px);
+ width:100%; border-bottom:1px solid var(--work-line);
+}
+@media(max-width:470px){
+ #p-portfolio .port-grid > .pi > div:first-child:not(.pi-ov) {
+  height:clamp(218px,65vw,300px);
+ }
+}
